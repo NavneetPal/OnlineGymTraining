@@ -78,7 +78,9 @@ app.delete('/comments/:id',(req,res)=>{
  
 
 
-
+app.get("/",function(req,res){
+    res.redirect("/ogt");
+})
 
 
 
@@ -136,9 +138,6 @@ app.post("/subscribe",(req,res)=>{
  
 
  
-app.get("*",(req,res)=>{
-    res.send("I dont know the path")
-});
 
 
 const port=process.env.PORT || 5000;
