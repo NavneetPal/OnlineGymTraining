@@ -1,0 +1,386 @@
+
+.navbar-brand
+{
+    white-space: nowrap;
+    text-align: left;
+    font-family: Agency FB;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 80px;
+    color: rgba(255,255,255,1);
+    margin-left:50px;
+}
+
+.navbar .nav-link:hover{
+    border-bottom:1px solid white;
+    transition:border 0.2s;
+}
+
+#cutfromtop
+{
+    position:fixed;
+    width:100px;
+    height:100px;
+    right:10px;
+    top:20px;
+}
+#navbarogt{
+    z-index:1;
+}
+
+#logincred{
+    margin-left:50px;
+}
+.jumbotron{
+    background-size: cover;
+    background-position: center;
+  
+    padding-top:380px;
+    padding-bottom:100px;
+    padding-left:20px;
+    padding-right:20px;
+    margin-top:-450px;
+    position: relative;
+    background: url(/imgs/b1.jpg) no-repeat;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    -ms-background-size: cover;
+    height: 100%; 
+}
+
+
+
+.homepara{
+    margin-top: 150px;
+    margin-left: 50px;
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 60px;
+    color: rgba(255,255,255,1);
+    
+}
+
+#meeton{
+    font-family: Raleway;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 20px;
+    color: rgba(255,255,255,1);
+}
+
+.nav-link
+{
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 22px;
+    color: rgba(255,255,255,1);
+}
+
+
+
+.btn1{
+    font-size:28px;
+    padding-top:10px;
+    padding-left:30px;
+    padding-right:30px;
+    padding-bottom:10px;
+
+}
+
+#signin{
+    background-color:#f65a5b;
+    color:white;
+}
+
+#OGT
+{
+    font-family: Agency FB;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 101px;
+    color: rgba(186,62,4,1);
+}
+
+#WELCOME_BACK {
+    width: 388px;
+    white-space: nowrap;
+    text-align: left;
+    font-family: Segoe UI;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 53px;
+    color: rgba(186,62,4,1);
+}
+
+.form-control{
+    border-color:rgba(186,62,4,1);
+}
+
+.LOGINMEN
+{
+    background-image: url(/imgs/loginmen.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+.optic
+{
+    background-image: url(/imgs/BG.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover; 
+    padding-bottom:10px;
+}
+
+.optic1
+{
+    background-image: url(/imgs/BG.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover; 
+    padding-bottom:10px;
+}
+
+.theme-text{
+    font-family:"Open Sans",Arial,Helvetica,sans-serif;
+    color:#6e7077;
+    font-size:28px;
+    font-weight:700;
+    line-height:27px;
+    letter-spacing:2px;
+}
+
+.getin{
+    font-family: Georgia;
+    color: rgb(31, 73, 125);
+    font-weight:700;
+    font-size:36px;
+    letter-spacing:1px;
+    line-height:72px;
+}
+
+.same{
+    color: rgb(31, 73, 125);
+    font-size: 24px;
+    font-weight: 700;
+    text-align: center;
+    line-height: 24px;
+    letter-spacing: 2px;
+    font-family:"Open Sans",Arial,Helvetica,sans-serif;
+}
+
+.same1{
+    color:rgb(227, 108, 9);
+    text-align: center;
+    font-size: 24px;
+    line-height: 48px;
+    font-family:"Open Sans",Arial,Helvetica,sans-serif;
+}
+
+.social{
+    cursor: pointer;
+    max-width:64px;
+    list-style: none;
+}
+
+.nav li a{
+    color:#8a8a8a;
+    width: auto;
+    display: block;
+    text-decoration: none;
+    background-color: transparent;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+
+
+#storesection{
+    background-image:url(/imgs/balckimg.jpg);
+    padding-bottom:50px; background-size:cover;
+     background-position: center;
+      -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    -ms-background-size: cover; 
+    z-index:-1;
+}
+#storesectioncontent{
+    z-index:1;
+}
+
+
+
+a.custom-card,
+a.custom-card:hover {
+  color: inherit;
+}
+
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -15px;
+    margin-left: -15px;
+}
+
+
+
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+  }
+  
+  tr:nth-child(even) {
+    background-color: #dddddd;
+  }
+
+
+
+input, button, select, optgroup, textarea {
+    margin: 0;
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+}
+
+.team {
+    background: #f65a5b;
+}
+.title {
+    font-size: 43px;
+    }
+
+.card img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.container1 {
+position: relative;
+
+}
+
+.image {
+opacity: 1;
+display: block;
+width: 100%;
+height: auto;
+transition: .5s ease;
+backface-visibility: hidden;
+}
+
+.middle {
+transition: .5s ease;
+opacity: 0;
+position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+-ms-transform: translate(-50%, -50%)
+}
+
+.container1:hover .image {
+opacity: 0.3;
+}
+
+.container1:hover .middle {
+opacity: 1;
+}
+
+.text {
+background-color:#f65a5b;
+color: white;
+font-size: 16px;
+padding: 16px 32px;
+}
+
+.buynowbtn{
+    transition-duration: 0.2s;
+}
+.buynowbtn:hover{
+    background-color:#996633;
+    border:1px solid#996633; 
+}
+
+.nav-tabs .a:active {
+    background-color: #fc636b;
+    color:black;
+}
+
+.jointitle{
+    font-size: 26px;
+    line-height: 46px;
+    color: #232020;
+    margin-bottom: 24px;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+.joinpara{
+    font-size: 15px;
+    line-height: 1.5;
+    color: #6b778d;
+    font-family: 'Lato', sans-serif;
+}
+
+
+.error
+{
+    display: none;
+    font-size:18px;
+    letter-spacing:1px;
+
+}
+.errorAnim
+{
+    display:inline-block;
+}
+
+.fadeOut{
+    animation:fadeout 1s forwards;
+}
+
+.fadein{
+    animation:fadin 1s forwards;
+    display: block !important;
+}
+
+@keyframes fadeout{
+    from{
+        opacity:1;
+    }
+    to{
+        opacity:0;
+    }
+}
+@keyframes fadein{
+    0%{
+        display:block;
+        opacity:0;
+    }
+    1%{
+        display:block;
+        opacity:0;
+    }
+    100%{
+        opacity:1;
+        display:block;
+    }
+}
+
+.inner-form{
+    display:none;
+}

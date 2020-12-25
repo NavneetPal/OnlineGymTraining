@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit</title>
+</head>
+<body>
+   <h1>Edit The Comments of <%= comment.username %>  </h1>
+    <form method="POST" action="/comments/<%= comment.id %>?_method=PATCH" >
+        <textarea name="comment"  cols="30" rows="4">
+            <%= comment.comment %>
+        </textarea>
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>
