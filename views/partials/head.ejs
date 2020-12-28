@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
+    <link rel="stylesheet" href="css/style.css">
+    <title>Home</title>
+    
+    
+  </head>
+  <body>
+    
+    <!--navbar-->
+    <nav class="navbar navbar-expand-lg navbar-dark" id="navbarogt">
+            <a class="navbar-brand" href="/">OGT<p style="font-size: 22px;letter-spacing:3px">ONLINE GYM TRAINING</p></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+          
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav ml-auto" style="margin-right:150px">
+                <li class="nav-item active">
+                  <a class="nav-link" href="/">HOME <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/about">ABOUT</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">STORE</a>
+                </li>
+                <% if (currentUser) { %>
+                  <li class="nav-item ">
+                    <a class="nav-link" href="#"><span style="color:#f1eeee">WELCOME <%= (currentUser.username).toUpperCase() %></span></a>
+                  </li>
+                <% } %>
+                
+              </ul>
+            </div>
+    </nav>
+    <!--Navbar Over-->
+
+    
