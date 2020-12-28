@@ -18,9 +18,10 @@ const authRoutes=require('./routes/index');
 
 //Database Setup
 
-//const dbUrl=process.env.DB_URL 
+const dbUrl="mongodb+srv://Navneet:XSFHZ0NeePAowa3K@cluster0.3d1wn.mongodb.net/ogt?retryWrites=true&w=majority" 
 //   process.env.DB_URL
-mongoose.connect("mongodb+srv://Navneet:XSFHZ0NeePAowa3K@cluster0.3d1wn.mongodb.net/ogt?retryWrites=true&w=majority",
+
+mongoose.connect(dbUrl,
 {
     useNewUrlParser:true,
     useUnifiedTopology:true,
