@@ -18,9 +18,8 @@ const authRoutes=require('./routes/index');
 
 //Database Setup
 
-const dbUrl="mongodb+srv://Navneet:XSFHZ0NeePAowa3K@cluster0.3d1wn.mongodb.net/ogt?retryWrites=true&w=majority" 
+const dbUrl=process.env.DB_URL||"mongodb://localhost:27017/ogt" 
 //   process.env.DB_URL
-
 mongoose.connect(dbUrl,
 {
     useNewUrlParser:true,
@@ -91,6 +90,14 @@ app.use((req,res,next)=>{
 
 
 app.use('/',authRoutes)
+
+
+
+
+ 
+
+ 
+
 
 //Port setup
 const port=process.env.PORT || 5000;
