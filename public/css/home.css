@@ -260,8 +260,11 @@ opacity: 1;
 /* Media queries*/
 @media(max-width:360px){
     .navbar-brand{
-        font-size: 22px;
+        font-size: 35px;
         margin:0;
+    }
+    .navbar-brand p{
+        display:none;
     }
     .homepara{
         font-size: 40px;
