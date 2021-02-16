@@ -257,6 +257,10 @@ opacity: 1;
     letter-spacing:1px;
 }
 
+
+
+
+
 /* Media queries*/
 @media(max-width:360px){
     .navbar-brand{

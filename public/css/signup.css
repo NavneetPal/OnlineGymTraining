@@ -1,0 +1,74 @@
+*{
+    box-sizing:border-box;
+}
+body{
+    background: rgba(16,26,56,1);
+}
+
+.LOGINMEN
+{
+    background-image: url(/imgs/loginmen.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+.optic1
+{
+    background-image: url(/imgs/BG.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover; 
+    padding-bottom:10px;
+}
+
+#OGT
+{
+    font-family: Agency FB;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 101px;
+    color: rgba(186,62,4,1);
+}
+
+#WELCOME_BACK {
+    width: 388px;
+    white-space: nowrap;
+    text-align: left;
+    font-family: Segoe UI;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 53px;
+    color: rgba(186,62,4,1);
+}
+
+form label{
+    color:rgba(255,255,255,1);
+}
+
+#signupbtn{
+    border-color:rgba(186,62,4,1);
+    color:rgba(186,62,4,1);
+    font-size:20px;
+}
+
+#signupform{
+    margin-top:3rem;
+}
+
+@media(max-width:360px){
+    #OGT{
+        font-size: 50px;
+    }
+    #WELCOME_BACK {
+        font-size: 20px;
+    }
+    #signupform{
+        margin-top:18px;
+    }
+    .optic1{
+        border-radius:30px;
+    }
+    #main-content{
+        margin:0 auto;
+    }
+}

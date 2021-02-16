@@ -1,81 +1,107 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
-    <link rel="stylesheet" href="css/style.css">
-    <title>signup</title>
-  </head>
-  <body style="background: rgba(16,26,56,1);">
-    
-    
-    <div class="container-fluid box mt-3 mb-3" >
-        <div id="cutfromtop">
-          <a href="/"><i class="far fa-times-circle"style="font-size:48px;color:grey"></i></a>
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/signup.css">
+  <title>signup</title>
+</head>
+
+<body>
+
+  <!--To display an alert message when required field is not submitted-->
+  <div id="failure" class="alert alert-danger alert-dismissible fade" role="alert">
+    <strong>Mandotory</strong> Please fill out all the required field in the form.
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+  <!--Alert Message-->
+
+  <!--signup Form-->
+  <div id="main-content" class="container-fluid box mt-3 mb-3">
+    <div class="container">
+      <div class="row">
+        <div class="d-none d-lg-block col-md-6 LOGINMEN">
         </div>
-        <div class="container">
-            <div class="row">
-                <div class="d-none d-lg-block col-md-6 LOGINMEN">
-                </div>
-                <div class="col-md-12 col-lg-6 optic1">
-                    <div id="OGT">
-                        <span>OGT</span>
-                    </div>
-                    <div id="WELCOME_BACK">
-                        <span>W</span><span style="color:rgba(255,255,255,1);">ELCOME B</span><span>A</span><span style="color:rgba(255,255,255,1);">CK</span>
-                    </div>
-                    <form class="mt-5" action="/signup" method="POST">
-                        <div class="form-group">
-                          <label for="username" class="form-label" style="color:rgba(255,255,255,1)">Username</label>
-                          <input type="text" class="form-control" placeholder="Username" id="username" name="username" required>
-                        </div>
-                        <div class="form-group">
-                          <label for="email" class="form-label"  style="color:rgba(255,255,255,1)">Email</label>
-                          <input type="email" class="form-control" placeholder="Your Email Here" id="email" name="email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
-                        </div>
-                        <div class="form-group">
-                          <label for="password" class="form-label"  style="color:rgba(255,255,255,1)">Password</label>
-                          <input type="password" class="form-control" placeholder="Password" id="passowrd" name="password">
-                        </div>
-                        <div class="mt-5 text-center">
-                            <button class="btn btn-block btn-sm rounded-lg" style="border-color:rgba(186,62,4,1);color:rgba(186,62,4,1);font-size:20px;">SIGN UP</button>
-                        </div>
-                        <div class="mt-2">
-                          <p class="text-center">
-                            <span class="text-muted">By clicking "signup" you agree to our </span> <br>
-                            <a href="#" class="text-white">Term of Service</a> <span class="text-muted">& </span><a href="#" class="text-white">Privacy Policy</a>
-                          </p>
-                        </div>
-                      </form>
-                      <p class="text-center" style="color:rgba(186,62,4,1)">  Or Continue With </p>
-                      <div class="text-center">
-                          <a href="#" class="mr-5" style="font-size:20px"><i class="fa fa-2x fa-google" style="color:rgba(186,62,4,1)"></i></a>
-                          <a href="#" style="font-size:20px"><i class="fa fa-2x fa-facebook" style="color:rgba(186,62,4,1)"  ></i></a>
-                      </div>
-                </div>
-            </div>
+        <div class="col-md-12 col-lg-6 optic1">
+          <div id="OGT">
+            <span>OGT</span>
+          </div>
+          <div id="WELCOME_BACK">
+            <span>W</span><span style="color:rgba(255,255,255,1);">ELCOME B</span><span>A</span><span
+              style="color:rgba(255,255,255,1);">CK</span>
+          </div>
+          <!---Signup form div--->
+          <div>
+            <form  id="signupform" action="/signup" method="POST">
+              <div class="form-group">
+                <label for="username" class="form-label">Username*</label>
+                <input type="text" class="form-control" placeholder="&#xf007 &nbsp;&nbsp;Username" id="username" name="username"  style="font-family:Arial, FontAwesome">
+                <small class="invalid-feedback">
+                  Your username must be 5-10 characters long and should not start with number.
+              </small>
+              </div>
+              <div class="form-group">
+                <label for="email" class="form-label">Email*</label>
+                <input type="email" class="form-control" placeholder="&#xf0e0 &nbsp;&nbsp;Your Email Here" id="email" name="email" style="font-family:Arial, FontAwesome">
+                <small class="invalid-feedback">
+                  Your email must be valid.
+                </small>
+              </div>
+              <div class="form-group">
+                <label for="password" class="form-label">Password*</label>
+                <input type="password" class="form-control" placeholder="&#xf084 &nbsp;&nbsp;Password" id="password" name="password" style="font-family:Arial, FontAwesome">
+                <small class="invalid-feedback">
+                  Password contains at-least one uppercase letter having length 8 - 15 characters
+              </small>
+              </div>
+              <div class="mt-5 text-center">
+                <button id="signupbtn" type="submit" class="btn btn-block btn-sm rounded-lg">SIGN UP</button>
+              </div>
+            </form>
+          </div>
+          <!--Signup Form div-->
+          <div class="mt-2">
+            <p class="text-center">
+              <span class="text-muted">By clicking "signup" you agree to our </span> <br>
+              <a href="#" class="text-white">Term of Service</a> <span class="text-muted">& </span><a href="#"
+                class="text-white">Privacy Policy</a>
+            </p>
+          </div>
+          <p class="text-center" style="color:rgba(186,62,4,1)"> Or Continue With </p>
+          <div class="text-center">
+            <a href="#" class="mr-5" style="font-size:20px"><i class="fa fa-2x fa-google"
+                style="color:rgba(186,62,4,1)"></i></a>
+            <a href="#" style="font-size:20px"><i class="fa fa-2x fa-facebook" style="color:rgba(186,62,4,1)"></i></a>
+          </div>
         </div>
+      </div>
     </div>
+  </div>
+  <!--Signup Form-->
 
 
 
 
 
-    <!-- Optional JavaScript; choose one of the two! -->
+  <!-- Optional JavaScript; choose one of the two! -->
 
-    <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
-    <script src="/js/jquery-min.js"></script>
-    <script src="/js/bootstrap.min.js"></script>
+  
+  <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
+  <script src="/js/jquery-min.js"></script>
+  <script src="/js/bootstrap.min.js"></script>
 
-    <!-- Option 2: jQuery, Popper.js, and Bootstrap JS
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s" crossorigin="anonymous"></script>
-    -->
-  </body>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.6.0/dist/umd/popper.min.js" integrity="sha384-KsvD1yqQ1/1+IA7gi3P0tyJcT3vR+NdBTt13hSJ2lnve8agRGXTTyNaBYmCR/Nwi" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.min.js" integrity="sha384-nsg8ua9HAw1y0W1btsyWgBklPnCUAFLuTMS2G72MMONqmOymq585AcH49TLBQObG" crossorigin="anonymous"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+  <script src="js/signup.js"></script>
+</body>
+
 </html>
