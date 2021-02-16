@@ -1,5 +1,50 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-<%- include('partials/head') %> 
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
+    <link rel="stylesheet" href="css/home.css">
+    <title>Home</title>
+    
+    
+  </head>
+  <body>
+    
+    <!--navbar-->
+    <nav class="navbar navbar-expand-lg navbar-dark" id="navbarogt">
+            <a class="navbar-brand" href="/">OGT<p style="font-size: 22px;letter-spacing:3px">ONLINE GYM TRAINING</p></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+          
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav ml-auto" style="margin-right:150px">
+                <li class="nav-item active">
+                  <a class="nav-link" href="/">HOME <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/about">ABOUT</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">STORE</a>
+                </li>
+                <% if (currentUser) { %>
+                  <li class="nav-item ">
+                    <a class="nav-link" href="#"><span style="color:#f1eeee">WELCOME <%= (currentUser.username).toUpperCase() %></span></a>
+                  </li>
+                <% } %>
+                
+              </ul>
+            </div>
+    </nav>
+    <!--Navbar Over-->
+
+    
 
 
     <!--Jumbotron-->
@@ -43,7 +88,7 @@
               <div class="mb-5">
                <h5 style="color:#f65a5b;font-size: 34px;font-family: Oswald, sans-serif;letter-spacing: 1px;font-weight: 500;">Fitness And Health</h5>
               </div>
-              <p style="font-size:24px;letter-spacing:1px;">Health and fitness are related, and it is impossible to achieve one without paying heed to the other.
+              <p id="fitness-detail">Health and fitness are related, and it is impossible to achieve one without paying heed to the other.
                 Staying Healthy is essential to work correctly and live productively. <br>
                 Fitness is crucial as it helps us to work without facing difficulties and increases our resistance to disease-causing germs.
                 Not only does staying fit facilitates our workability,but also helps but to be happy and content.
@@ -62,8 +107,8 @@
     <section style="background-color:#f65a5b; padding-bottom:50px" >
       <div class="container">
         <h3 class="text-center pt-5 mb-5" style="color:whitesmoke;font-size:48px;letter-spacing:2px">Our Trainer</h3>
-        <div class="row">
-          <div class="col-md-6 col-lg-3 mb-2">
+        <div class="row" id="teamcenter">
+          <div class="trainer">
             <div class="card" style="width: 16rem;border-style: solid;border-color: black;">
               <div class="container1">
                 <img src="/imgs/t1.jpg" class="image card-img-top img-fluid" style="height:260px" alt="...">
@@ -83,7 +128,7 @@
               </div>
             </div>
           </div>
-          <div class="col-md-6 col-lg-3">
+          <div class="trainer">
             <div class="card" style="width: 16rem; border-style: solid;border-color: black;">
               <div class="container1">
                 <img src="/imgs/t2.jpg" class="image card-img-top img-fluid" style="height:260px" alt="...">
@@ -103,7 +148,7 @@
               </div>
             </div>
           </div>
-          <div class="col-md-6 col-lg-3">
+          <div class="trainer">
             <div class="card" style="width: 16rem; border-style: solid;border-color: black;">
               <div class="container1">
                 <img src="/imgs/t3.jpg" class="image card-img-top img-fluid" style="height:260px" alt="...">
@@ -123,7 +168,7 @@
               </div>
             </div>
           </div>
-          <div class="col-md-6 col-lg-3">
+          <div class="trainer">
             <div class="card" style="width: 16rem; border-style: solid;border-color: black;">
               <div class="container1">
                 <img src="/imgs/t4.jpg" class="image card-img-top img-fluid" style="height:260px" alt="...">
@@ -348,10 +393,10 @@
     
 
     <!--Bootstrap Newsletter-->
-     <section class="container-fluid mt-3 mb-2">
+     <section class="container mt-3 mb-2">
          <div class="row">
-           <div class="col-md-6">
-             <div id="signup" style="margin-top:70px;margin-left:100px;">
+           <div class="col-md-6" id="displaycenter">
+             <div id="signup">
               <h3 class="jointitle" >JOIN US FOR FREE TO GET INSTANT <span style="color: #fc636b;">EMAIL UPDATES!</span></h3>
               <p class="joinpara">Subscribe and get notified at first on the latest update and offers!</p>
               <form action="/subscribe" method="POST" class="form-inline mt-5 text-center">
@@ -371,7 +416,7 @@
               <p class="joinpara">The last step is to confirm your email. Give it a couple minutes!</p>
             </div>
            </div>
-           <div class="col-md-6">
+           <div class="col-md-6 d-none d-md-block">
              <img src="/imgs/subscribe.jpg"  class="img-fluid" style="height: 25em;width:100%;" alt="" >
            </div>
          </div>
@@ -380,7 +425,7 @@
     
 
 
-
+     <!--Get in touch-->
     <div class="container-fluid pb-3" style="background-color: seashell;">
       <div class="container">
         <div class="row pt-5">
@@ -393,7 +438,7 @@
           <div class="col-md-6">
             <div class="mb-5">
               <p class="same">EMAIL</p>
-               <p class="text-center"><a href="#" class="same1" style="list-style:none;">onlinegymtrainingogt@gmail.com</a></p> 
+               <p class="text-center"><a href="mailto:onlinegymtrainingogt@gmail.com" class="same1">onlinegymtrainingogt@gmail.com</a></p> 
             </div>
             <div>
               <p class="same">ADDRESS</p>
@@ -403,7 +448,8 @@
           <div class="col-md-6">
             <div class="mb-5">
               <p class="same">CALL</p>
-              <p class="same1">+91-9714023076</p>
+              <p class="text-center"><a class="same1" href="tel:+91-9714023076">+91-9714023076</a></p>
+              
             </div>
             <div>
               <p class="same">SOCIAL LINKS</p>
@@ -418,14 +464,17 @@
         </div>
       </div>
     </div>
+    <!--Get in touch -->
     <hr>
 
+    <!--Footer section-->
     <footer>
       <div class="container">
         <div class="row pb-2">
             <div class="col-md-12">
+
               <div class="d-flex justify-content-around">
-                <ul class="nav">
+                <ul class="nav" id="footer-menu">
                   <li class="nav-item">
                     <a class="nav-link active" href="#">Terms & Conditions</a>
                   </li>
@@ -440,7 +489,7 @@
                     </a>
                   </li>
                 </ul>
-                <ul class="nav">
+                <ul class="nav" id="footer-social">
                   <li class="nav-item">
                     <a class="nav-link" href="#"><i class="fab fa-facebook fa-2x"></i></a>
                   </li>
@@ -464,7 +513,7 @@
         </div>
       </div>
     </footer>
-
+    <!--Footer Section-->
 
 
     
