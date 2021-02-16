@@ -260,7 +260,7 @@ opacity: 1;
 /* Media queries*/
 @media(max-width:360px){
     .navbar-brand{
-        font-size: 40px;
+        font-size: 30px;
         margin:0;
     }
     .homepara{
