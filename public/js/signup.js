@@ -64,11 +64,11 @@ password.addEventListener('blur',function(){
 })
 
 signupbtn.addEventListener('click',(e)=>{
-    e.preventDefault();
-    
+   // e.preventDefault();
+    let myForm=document.querySelector('#signupform')
     //Submit your form here
     if(validEmail && validUsername && validPassword){
-       window.location="/signup";
+        failure.classList.remove('show');
     }else{ 
         console.log('One of Password,email and user are invalid.Hence not submitting the form.Please correct the error');
         let failure=document.querySelector('#failure');
