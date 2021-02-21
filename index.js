@@ -19,7 +19,7 @@ const blogRoutes=require('./routes/blog');
 //Database Setup
 const dbUrl=process.env.DB_URL||"mongodb://localhost:27017/ogt" 
 //   process.env.DB_URL
-mongoose.connect("mongodb://localhost:27017/ogt",
+mongoose.connect(dbUrl,
 {
     useNewUrlParser:true,
     useUnifiedTopology:true,
