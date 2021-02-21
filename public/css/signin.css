@@ -33,3 +33,17 @@
     background-size: cover; 
     padding-bottom:10px;
 }
+
+
+@media(max-width:360px){
+    #OGT{
+        font-size: 50px;
+    }
+    #WELCOME_BACK {
+        font-size: 20px;
+    }
+   
+    .optic{
+        border-radius:30px;
+    }
+}
