@@ -1,0 +1,35 @@
+.LOGINMEN
+{
+    background-image: url(/imgs/loginmen.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+#OGT
+{
+    font-family: Agency FB;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 101px;
+    color: rgba(186,62,4,1);
+}
+
+#WELCOME_BACK {
+    width: 388px;
+    white-space: nowrap;
+    text-align: left;
+    font-family: Segoe UI;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 53px;
+    color: rgba(186,62,4,1);
+}
+
+.optic
+{
+    background-image: url(/imgs/BG.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover; 
+    padding-bottom:10px;
+}
