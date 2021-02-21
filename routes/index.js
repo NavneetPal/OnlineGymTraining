@@ -55,7 +55,7 @@ router.post("/subscribe",(req,res)=>{
     }
 })
 
-router.get('/about',isLoggedIn,(req,res)=>{
+router.get('/about',(req,res)=>{
     res.render('about');
 })
 

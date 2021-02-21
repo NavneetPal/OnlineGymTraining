@@ -12,15 +12,14 @@ const passport=require('passport');
 const LocalStrategy=require('passport-local');
 const User=require('./models/user');
 const MongoStore = require('connect-mongo')(session);
-
-
 const authRoutes=require('./routes/index');
+const blogRoutes=require('./routes/blog');
+
 
 //Database Setup
-
 const dbUrl=process.env.DB_URL||"mongodb://localhost:27017/ogt" 
 //   process.env.DB_URL
-mongoose.connect(dbUrl,
+mongoose.connect("mongodb://localhost:27017/ogt",
 {
     useNewUrlParser:true,
     useUnifiedTopology:true,
@@ -43,6 +42,7 @@ mongoose.connect(dbUrl,
 
 //Middleware
 app.use(bodyParser.urlencoded({extended:true}));
+app.use(bodyParser.json());
 app.set('view engine','ejs');
 app.set('views',path.join(__dirname,'/views'));
 app.use(express.static(path.join(__dirname,'public')));
@@ -89,6 +89,25 @@ app.use((req,res,next)=>{
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//Main routes Handling
+app.use('/blogs',blogRoutes)
 app.use('/',authRoutes)
 
 
@@ -100,7 +119,7 @@ app.use('/',authRoutes)
 
 
 //Port setup
-const port=process.env.PORT || 5000;
+const port=process.env.PORT ||8080 ;
 app.listen(port,()=>{
     console.log(`Server started on ${port} port`);
 })
