@@ -15,14 +15,10 @@ const MongoStore = require('connect-mongo')(session);
 const authRoutes=require('./routes/index');
 const blogRoutes=require('./routes/blog');
 
-console.log(process.env.NODE_ENV)
-//Database Setup
-if(process.env.NODE_ENV === "development"){
-    dbUrl="mongodb://localhost:27017/ogt";
-}else{
-    dbUrl=process.env.DB_URL;
-}
 
+
+//Database Setup
+const dbUrl=process.env.DB_URL||"mongodb://localhost:27017/ogt" 
 //   process.env.DB_URL
 mongoose.connect(dbUrl,
 {
