@@ -1,0 +1,450 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="icon" href="/imgs/ogtHeader2.png" type="image/png">
+    
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+        integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+        integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA=="
+        crossorigin="anonymous" />
+
+    <style>
+      .navbar-brand{
+        font-size: 45px;
+    }
+    .navbar .nav-link:hover{
+        border-bottom:1px solid white;
+        transition:border 0.2s;
+    }
+    .navbar{
+        padding: 0;
+        background-color: #262626;
+    }
+    .nav li a{
+        color:#8a8a8a;
+        width: auto;
+        display: block;
+        text-decoration: none;
+        background-color: transparent;
+        font-size: 12px;
+        font-weight: 700;
+    }
+    .breadcumb-image{
+        background-image: url('https://images.unsplash.com/photo-1605296867304-46d5465a13f1?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80');
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-attachment: fixed;
+        height: 300px;
+    }
+    .breadcumb-image{
+        display: flex;
+        flex-direction:column;
+        justify-content: center;
+        align-items: center;
+        color: #fff;
+    }
+    .bg-overlay{
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+    }
+    </style>
+    <title>Product</title>
+  </head>
+  <body>
+    
+    <!--navbar-->
+    <nav class="navbar navbar-expand-lg navbar-dark" id="navbarogt">
+      <div class="container">
+          <a class="navbar-brand" href="/">OGT</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ml-auto" style="margin-right:150px">
+          <li class="nav-item active">
+            <a class="nav-link" href="/">HOME <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/about">ABOUT</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">STORE</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/notifications">NOTIFICATION</a>
+          </li>
+          <% if (currentUser) { %>
+            <li class="nav-item ">
+              <a class="nav-link" href="#"><span style="color:#f1eeee">WELCOME <%= (currentUser.username).toUpperCase() %></span></a>
+            </li>
+          <% } %>
+          
+        </ul>
+      </div>
+      </div>
+  </nav>
+  <!--Navbar Over-->
+
+    <!--Breadcumb Section-->
+    <div class="breadcumb-image">
+      <div class="bg-overlay" style="background-color:transparent"></div>
+      <div class="breadcumb-title">
+          <h2 class="font-bold text-uppercase">Product</h2>
+      </div>
+    </div>
+  <!---Breadcumb Section over here-->
+
+    <!--About Product-->
+    <section class="mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <div style="border:1px solid grey">
+                        <img src="./imgs/rubber-dumbbell-set.jpg" class="img-fluid" style="width:300px;height:400px;" alt="">
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    <h3 style="color: #fb383b;font-size:38px;">Protoner Pair of 5kg Each PVC Dumbbells Set</h3>
+                    <p><span class="item_price">₹ 830.00</span> <del>1,880.00</del> </p>
+                    <p>
+                        <i class="fas fa-star text-warning"></i>
+                        <i class="fas fa-star text-warning"></i>
+                        <i class="fas fa-star text-warning"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </p>
+                    <div>
+                        <h5 class="text-muted"><small>Check delivery, payment options and charges at your location</small></h5>
+                        <form action="#" method="post">
+                            <div class="d-inline">
+                                <input type="text" class="p-2" placeholder="Enter pincode" size="40"  required>
+                                <input type="submit" class="p-2" style="background-color:black;color:white">
+                            </div>
+                        </form>
+                        <div class="mt-4 mb-4">
+                            <h5 class="mb-2" >Quantity :</h5>
+                            <select>
+                                <option value="1">1 Qty</option>
+                                <option value="2">2 Qty</option>
+                                <option value="3">3 Qty</option>
+                                <option value="4">4 Qty</option>
+                                <option value="5">5 Qty</option>
+                                <option value="6">6 Qty</option>
+                                <option value="7">7 Qty</option>
+                            </select>
+                        </div>
+                        <div class="d-inline">
+                            <button class="btn btn-sm" style="font-size: 13px;color: #fff;background: #1d1d1d;">ADD TO CART</button>
+                            <a class="btn btn-sm" href="checkout.html" style="font-size: 13px;color: #fff;background: #fb383b;">CHECKOUT</a>
+                        </div>
+                        <br>
+                        <div class="d-inline-flex mt-3 justify-content-between">
+                            <p style="font-size:24px;">Share On:</p>
+                            <a href="#" class="mr-2 ml-2"><i class="fab fa-2x fa-instagram-square"></i></a>
+                            <a href="#" class="mr-2"><i class="fab fa-2x fa-facebook-square"></i></a>
+                            <a href="#" class="mr-2"><i class="fab fa-2x fa-twitter-square"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--Product Over-->
+
+    <!--Description-->
+    <section class="mt-5 mb-3">
+        <div class="container">
+            <div class="card ">
+                <div class="card-header">
+                  <ul class="nav nav-tabs card-header-tabs">
+                      <li class="nav-item"><a href="#home" style="font-size:17px;" class="nav-link active" role="tab" data-toggle="tab">Description</a></li>
+                      <li class="nav-item"><a href="#profile" style="font-size:17px;" class="nav-link" role="tab" data-toggle="tab">Reviews</a></li>
+                      <li class="nav-item"><a href="#about" style="font-size:17px;" class="nav-link" role="tab" data-toggle="tab">Information</a></li>
+                    </ul>
+                </div>
+                <div class="card-body">
+                  <div class="tab-content">
+                      <div role="tabpanel" class="tab-pane active " id="home">
+                          <ul>
+                              <li>
+                                Included Components: Two 5kg rubber coated round dumbbells
+                              </li>
+                              <li>
+                                Build strength, burn fat, and create a shapely body with Klikfit. The round heads are perfect for doing overhead triceps extensions with plenty of surface area to comfortably place your hands underneath and other dumbbell workouts.
+                              </li>
+                              <li>
+                                Incorporating dumbbells are perfect for isolations, full body, functional and HIIT workouts; Adding resistance to your workout routine will help shed fat and build muscle faster
+                              </li>
+                              <li>
+                                Material: Rubber; Color: Black; Size - Item Length: 23.5cm, Item Width: 28cm, Item Height: 14cm; Item Weight: 10kg
+                              </li>
+                              <li>
+                                Dumbbells offer the ability to target specific muscle groups or perform a full body workout; Use smaller weights for upper body exercises and switch to heavier weights for lower body exercises
+                              </li>
+                          </ul>
+                      </div>
+                      <div role="tabpanel" class="tab-pane  " id="profile">
+                            <div class="media">
+                                <img src="./imgs/review.jpg" class="align-self-center mr-3 img-fluid" alt="...">
+                                <div class="media-body">
+                                <h5 class="mt-0">Krishna Mishra</h5>
+                                <p>Good buy. Were packed well. Looked absolutely new. Weigh 5.1 kg each. Not very compact but that doesn't bother much.</p>
+                                <p style="color:#fb383b;">REPLY<i class="fas fa-angle-double-right"></i></p>
+                                </div>
+                            </div>
+                            <div class="mt-3">
+                                <h5>ADD A REVIEW</h5>
+                                <form>
+                                    <div class="form-group">
+                                        <textarea class="form-control" rows="4">
+                                        </textarea>
+                                    </div>
+                                    <button type="submit" class="btn btn-sm" style="font-size: 13px;color: #fff;background: #fb383b;">Submit</button>
+                                  </form>
+                            </div>
+                      </div>
+                      <div role="tabpanel" class="tab-pane " id="about">
+                          <h5>Technical Details</h5>
+                          <table>
+                            
+                            <tr>
+                              <td>Brand</td>
+                              <td>Klikfit</td>
+                            </tr>
+                            <tr>
+                              <td>Color</td>
+                              <td>Black</td>
+                            </tr>
+                            <tr>
+                              <td>Included Components</td>
+                              <td>2 Units of Dumbbell</td>
+                            </tr>
+                            <tr>
+                              <td>Length</td>
+                              <td>9 Inches</td>
+                            </tr>
+                            <tr>
+                              <td>Width</td>
+                              <td>5.5 Inches</td>
+                            </tr>
+                            <tr>
+                              <td>Weight</td>
+                              <td>5 Kilograms</td>
+                            </tr>
+                            <tr>
+                              <td>Shape</td>
+                              <td>Round</td>
+                            </tr>
+                            <tr>
+                              <td>Material Type</td>
+                              <td>Rubber</td>
+                            </tr>
+                            <tr>
+                              <td>Features</td>
+                              <td>Exercise & Fitness</td>
+                            </tr>
+                            <tr>
+                                <td>Manufacturer</td>
+                                <td>Klikfit</td>
+                            </tr>
+                            <tr>
+                                <td>Country of Origin</td>
+                                <td>India</td>
+                            </tr>
+                          </table>
+                      </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!--Description Over-->
+
+    <!--Featured Product-->
+    <section style="padding-bottom:50px;margin-bottom:200px;" class="mb-5" >
+        <div class="container">
+          <h3 class="text-left pt-5 mb-3" style="font-size:38px;letter-spacing:2px">FEATURED PRODUCTS</h3>
+          <div class="container storesectioncontent">
+            <div class="card-deck">
+              <a href="" class="custom-card">
+                <div class="card mx-1 shadow-lg">
+                  <img  src="./imgs/rubber-dumbbell-set.jpg"  class="card-img-top" alt="...">
+                  <div class="card-body">
+                    <a href="product.html" class="card-title" style="color:black"> Protoner Pair of 5kg Each PVC Dumbbells Set...</a>
+                    <p class="card-text" style="font-size: 11px;">10% off with AU Bank Debit Cards...</p>
+                    <p class="card-text"><small class="text-muted">
+                      <i class="fas fa-star text-warning"></i>
+                      <i class="fas fa-star text-warning"></i>
+                      <i class="fas fa-star text-warning"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      4.5 (18,560)</small>
+                      <span class="d-block"></span>
+                      <span class="float-right " >
+                        <small style="text-decoration: line-through;" class="text-muted">(₹1,880)</small>₹830 Save ₹1,050 (56%)</span>
+                    </p> 
+                  </div>
+                </div>
+              </a>
+      
+              <a href="" class="custom-card">
+                <div class="card mx-1 shadow-lg">
+                  <img  src="./imgs/rubber-dumbbell-set.jpg"  class="card-img-top"  alt="...">
+                  <div class="card-body">
+                    <a href="product.html" style="color: black;">Bodygrip BGRIP5440 Kettlebell, 7Kg (Multicolour)...</a>
+                    <p class="card-text" style="font-size: 11px;">10% off with AU Bank Debit Cards...</p>
+                    <p class="card-text"><small class="text-muted">
+                      <i class="fas fa-star text-warning"></i>
+                      <i class="fas fa-star text-warning"></i>
+                      <i class="fas fa-star text-warning"></i>
+                      <i class="fas fa-star-half-alt text-warning"></i>
+                      <i class="fas fa-star "></i>
+                      4.5 (18,560)</small>
+                      <span class="d-block"></span>
+                      <span class="float-right" >
+                        <small style="text-decoration: line-through;" class="text-muted">(₹5,000)</small>₹856  Save ₹4,144 (83%)</span>
+                    </p>   
+                  </div>
+                </div>
+              </a>
+              <a href="" class="custom-card">
+                <div class="card mx-1 shadow-lg " >
+                  <img  src="./imgs/roller.jpg"  class="card-img-top" alt="...">
+                  <div class="card-body ">
+                    <a href="product.html" style="color:black">N&M™ Anti Skid Double Wheel AB Roller Portable...</a>
+                    <p class="card-text" style="font-size: 11px;">10% off with AU Bank Debit Cards...</p>
+                    <p class="card-text"><small class="text-muted">
+                      <i class="fas fa-star text-warning"></i>
+                      <i class="fas fa-star text-warning"></i>
+                      <i class="fas fa-star text-warning"></i>
+                      <i class="fas fa-star text-warning"></i>
+                      <i class="fas fa-star-half-alt text-warning"></i>
+                      4.5 (18,560)</small>
+                      <span class="d-block"></span>
+                      <span class="float-right" >
+                        <small style="text-decoration: line-through;" class="text-muted">(₹999)</small>₹299 Save ₹700 (70%)</span>
+                    </p>
+                  </div>
+                </div>
+              </a>
+              <a href="" class="custom-card">
+                <div class="card mx-1 shadow-lg ">
+                  <img  src="./imgs/dumbell-stand.jpg"  class="card-img-top"  alt="...">
+                  <div class="card-body">
+                    <a href="product.html" style="color:black">RISE UP Dumbbell Stand & Standard Weight Multilevel...</a>
+                    <p class="card-text" style="font-size: 11px;">Save extra with No Cost EMI...</p>
+                    <p class="card-text"><small class="text-muted">
+                      <i class="fas fa-star text-warning"></i>
+                      <i class="fas fa-star text-warning"></i>
+                      <i class="fas fa-star text-warning"></i>
+                      <i class="fas fa-star text-warning"></i>
+                      <i class="fas fa-star-half-alt text-warning"></i>
+                      4.5 (18,560)</small>
+                      <span class="d-block"></span>
+                      <span class="float-right" >
+                        <small style="text-decoration: line-through;" class="text-muted">($199)</small>$9.99 </span>
+                        
+                    </p> 
+                  </div>
+                </div>
+              </a>
+              <a href="" class="custom-card">
+                <div class="card mx-1 shadow-lg ">
+                  <img  src="./imgs/dumbel-plate.jpg"  class="card-img-top img-fluid"  alt="...">
+                  <div class="card-body ">
+                    <a href="product.html" style="color:black">Aurion Weight Plate disc Vinyl Standard Weights Plates Set...</a>
+                    <p class="card-text" style="font-size: 11px;">10% off with AU Bank Debit Cards...</p>
+                    <p class="card-text"><small class="text-muted">
+                      <i class="fas fa-star text-warning"></i>
+                      <i class="fas fa-star text-warning"></i>
+                      <i class="fas fa-star text-warning"></i>
+                      <i class="fas fa-star text-warning"></i>
+                      <i class="fas fa-star-half-alt text-warning"></i>
+                      4.5 (18,560)</small>
+                      <span class="d-block"></span>
+                      <span class="float-right" > ₹1,495 </span>  
+                    </p>
+                  </div>
+                </div>
+              </a>
+      
+            </div>
+          </div>
+        </div>
+      </section>
+    <!--Featured Product-->
+
+    
+
+    <!--FOOTER-->
+     <footer class="mt-5" style="padding-top:100px;">
+      <div class="container">
+          <div class="row pb-2">
+              <div class="col-md-12">
+                  <div class="d-flex justify-content-around">
+                      <ul class="nav">
+                          <li class="nav-item">
+                              <a class="nav-link active" href="#">Terms & Conditions</a>
+                          </li>
+                          <li class="nav-item">
+                              <a class="nav-link" href="#">Privacy</a>
+                          </li>
+                          <li class="nav-item">
+                              <a class="nav-link" href="#">Refund Policy</a>
+                          </li>
+                          <li class="nav-item">
+                              <a class="nav-link" href="#">COPYRIGHT <span>&#169;</span> 2020 OGT
+                              </a>
+                          </li>
+                      </ul>
+                      <ul class="nav">
+                          <li class="nav-item">
+                              <a class="nav-link" href="#"><i class="fab fa-facebook fa-2x"></i></a>
+                          </li>
+                          <li class="nav-item">
+                              <a class="nav-link" href="#"><i class="fab fa-instagram fa-2x"></i></a>
+                          </li>
+                          <li class="nav-item">
+                              <a class="nav-link" href="#"><i class="fab fa-telegram-plane fa-2x"></i></a>
+                          </li>
+                          <li class="nav-item">
+                              <a class="nav-link" href="#"><i class="fab fa-youtube fa-2x"></i></a>
+                          </li>
+                          <span class="border-right" style="border-width: thick;"></span>
+                      </ul>
+                  </div>
+
+
+              </div>
+          </div>
+
+      </div>
+      </div>
+  </footer>
+    <!--FOOTER-->
+
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+
+    <!-- Option 2: jQuery, Popper.js, and Bootstrap JS
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s" crossorigin="anonymous"></script>
+    -->
+ </body>
+</html>

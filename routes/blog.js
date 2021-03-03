@@ -3,6 +3,7 @@ const router=express.Router();
 const Blog=require('../models/blog');
 const mongoose=require('mongoose');
 
+
 //RESTFUL ROUTES
 
 
@@ -14,7 +15,7 @@ router.get("/",function(req,res){
             console.log("ERRORS");
         }
         else{
-            res.render("blogs/index",{blogs:blogs});
+            res.render("notifications/index",{blogs:blogs});
         }
     }) 
 })
@@ -37,7 +38,7 @@ router.get("/",function(req,res){
 
 //NEW ROUTE :This will give us the form to create a new Blog and will rrender to that page
 router.get("/new",function(req,res){
-    res.render("blogs/new")
+    res.render("notifications/new")
 })
 
 //CREATE ROUTE :This will create the blog in the dtabase when we submit information to the form and click submit the form
@@ -48,10 +49,10 @@ router.post("/",function(req,res){
          image:image,
          description:description
      }).then(blog=>{
-         res.redirect('/blogs');
+         res.redirect('/notifications');
      })
      .catch(err=>{
-         res.render("blogs/new");
+         res.render("notifications/new");
      })
     
 })
@@ -61,10 +62,10 @@ router.post("/",function(req,res){
 router.get("/:id",function(req,res){
     Blog.findById(req.params.id,function(err,foundBlog){
         if(err){
-            res.redirect("/blogs");
+            res.redirect("/notifications");
         }
         else{
-            res.render("blogs/show",{blog:foundBlog});
+            res.render("notifications/show",{blog:foundBlog,req});
         } 
     })  
 });
@@ -77,9 +78,9 @@ router.get("/:id/edit",function(req,res){
     Blog.findById(req.params.id,function(err,foundBlog){
         if(err)
         {
-            res.redirect("/blogs");
+            res.redirect("/notifications");
         }else{
-            res.render("blogs/edit",{blog:foundBlog});
+            res.render("notifications/edit",{blog:foundBlog});
         }
     })
 })
@@ -92,9 +93,9 @@ router.put("/:id",function(req,res){
     Blog.findByIdAndUpdate(req.params.id,req.body.blog,function(err,updateBlog){
         if(err)
         {
-            res.redirect("/blogs");
+            res.redirect("/notifications");
         } else{
-            res.redirect("/blogs/"+req.params.id);
+            res.redirect("/notifications/"+req.params.id);
         }
     })
 })
@@ -106,9 +107,9 @@ router.delete("/:id",function(req,res){
     Blog.findByIdAndRemove(req.params.id,function(err){
         if(err)
         {
-            res.redirect("/blogs");
+            res.redirect("/notifications");
         }else {
-            res.redirect("/blogs");
+            res.redirect("/notifications");
         }
     })
     //redirect somewhere

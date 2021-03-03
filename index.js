@@ -14,10 +14,17 @@ const User=require('./models/user');
 const MongoStore = require('connect-mongo')(session);
 const authRoutes=require('./routes/index');
 const blogRoutes=require('./routes/blog');
+const productRoutes=require('./routes/product');
+
+const find = require('find-process')
+const http = require('http')
 
 
 //Database Setup
-const dbUrl=process.env.DB_URL||"mongodb://localhost:27017/ogt" 
+var dbUrl="mongodb://localhost:27017/ogt" 
+if(process.env.NODE_ENV="production"){
+    dbUUrl=process.env.DB_URL;
+}
 //   process.env.DB_URL
 mongoose.connect(dbUrl,
 {
@@ -107,8 +114,10 @@ app.use((req,res,next)=>{
 
 
 //Main routes Handling
-app.use('/blogs',blogRoutes)
+app.use('/notifications',blogRoutes);
+app.use('/products',productRoutes);
 app.use('/',authRoutes)
+
 
 
 
@@ -119,7 +128,12 @@ app.use('/',authRoutes)
 
 
 //Port setup
-const port=process.env.PORT ||8080 ;
-app.listen(port,()=>{
-    console.log(`Server started on ${port} port`);
+const PORT=process.env.PORT ||8080 ;
+
+
+
+app.listen(PORT,()=>{
+    console.log(`Server started on ${PORT} port`);
 })
+
+

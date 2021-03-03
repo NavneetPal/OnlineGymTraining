@@ -4,18 +4,61 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="icon" href="/imgs/ogtHeader2.png" type="image/png">
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
     <link rel="stylesheet" href="css/style.css">
-    <title>Home</title>
+    <style>
+        /* .blog-item{
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 30px;
+            margin-bottom: 30px;
+            margin-left: 300px;
+        } */
+        .navbar{
+            padding: 0;
+            background-color: #262626;
+        }
+        .navbar-nav a{
+            font-size:16px;
+            font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+        }
+        .navbar-brand{
+            font-size: 45px;
+        }
+        .breadcumb-image{
+            background-image: url('https://images.unsplash.com/photo-1605296867304-46d5465a13f1?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80');
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-attachment: fixed;
+            height: 300px;
+        }
+        .breadcumb-image{
+            display: flex;
+            flex-direction:column;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+        }
+        .bg-overley{
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+        }
+    </style>
+    <title>NOTIFICATION</title>
   </head>
   <body>
     
      <!--navbar-->
-     <nav class="navbar navbar-expand-lg navbar-dark bg-dark"  id="navbarogt">
-        <a class="navbar-brand" href="/">OGT<p style="font-size: 22px;letter-spacing:3px">ONLINE GYM TRAINING</p></a>
+    <nav class="navbar navbar-expand-lg navbar-dark" id="navbarogt">
+        <div class="container">
+            <a class="navbar-brand" href="/">OGT</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -32,7 +75,7 @@
               <a class="nav-link" href="#">STORE</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/blogs">NOTIFICATION</a>
+              <a class="nav-link" href="/notifications">NOTIFICATION</a>
             </li>
             <% if (currentUser) { %>
               <li class="nav-item ">
@@ -42,37 +85,54 @@
             
           </ul>
         </div>
+        </div>
     </nav>
-<!--Navbar Over-->
+    <!--Navbar Over-->
+
+    <!--Breadcumb Section-->
+    <div class="breadcumb-image">
+        <div class="bg-overlay" style="background-color:transparent"></div>
+        <div class="breadcumb-title">
+            <h2 class="font-bold text-uppercase">HOME - NOTIFICATIONS</h2>
+        </div>
+    </div>
+    <!---Breadcumb Section over here-->
+  
 
 
-      <div class="container ">
-        <div class="row">
-            <div class="form mb-0" style=" border-radius:30px; border: 5px solid red; padding:30px; margin-top:50px; margin-left:350px">
-                <form action="/blogs" method="POST">
-                    <div class="form-group">
-                        <label for="title">Title</label>
-                        <input style="width: 350px;" type="text" class="form-control" id="title" name="title" placeholder="title">
-                      </div>
-                    <div class="form-group">
-                      <label for="image">Image-Url</label>
-                      <input style="width: 350px;" type="url" class="form-control" id="image" name="image" placeholder="image-url">
+    <!--All notification coming from the database comes here -->
+    <div class="container">
+        <div class="row mt-5">
+            <div class="col-md-3">
+                <p class="lead">OGT</p>
+                <div class="list-group">
+                    <li class="list-group-item active">Info 1</li>
+                    <li class="list-group-item">Info 2</li>
+                    <li class="list-group-item">Info 3</li>
+                </div>
+            </div>
+            <div class="col-md-9">
+                <% blogs.forEach(blog => { %>
+                <div class="mb-5">
+                    <img class="img-fluid" width="100%" src="<%= blog.image %>">
+                    <div class="mt-4">
+                        <h4 style="font-size:30px;"><a href="/notifications/<%= blog._id%>"><%=blog.title %></a></h4>
+                        <p> <%= blog.description.substring(0,100) %>.......... </p>
+                        <p>
+                            <em> Submitted On: <%= blog.createdAt.toDateString() %>  </em>
+                        </p>
                     </div>
-                    <div class="form-group">
-                      <label for="description">Description</label>
-                      <textarea style="width: 350px;" class="form-control" id="description" name="description" rows="3"></textarea>
+                    <div class="text-right">
+                        <a class="btn btn-success"  href="/notifications/<%= blog._id%>">READ MORE</a>
                     </div>
-                    <div>
-                      <button type="submit">Submit</button>
-                    </div>
-                  </form>
+                    <hr>
+                </div>
+                <% }) %>
             </div>
         </div>
-      </div>
+    </div>
+    <!--All notification ends here-->
 
-   
-
-    
      <!-- footer -->
      <footer class="mt-5" style="padding-top:100px;">
         <div class="container">
