@@ -12,9 +12,10 @@ const passport=require('passport');
 const LocalStrategy=require('passport-local');
 const User=require('./models/user');
 const MongoStore = require('connect-mongo')(session);
-const authRoutes=require('./routes/index');
+const indexRoutes=require('./routes/index');
 const blogRoutes=require('./routes/blog');
 const productRoutes=require('./routes/product');
+const authRoutes=require('./routes/auth');
 
 const find = require('find-process')
 const http = require('http')
@@ -116,6 +117,7 @@ app.use((req,res,next)=>{
 //Main routes Handling
 app.use('/notifications',blogRoutes);
 app.use('/products',productRoutes);
+app.use('/',indexRoutes)
 app.use('/',authRoutes)
 
 

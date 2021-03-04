@@ -14,50 +14,54 @@
         integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA=="
         crossorigin="anonymous" />
 
-    <style>
-      .navbar-brand{
-        font-size: 45px;
-    }
-    .navbar .nav-link:hover{
-        border-bottom:1px solid white;
-        transition:border 0.2s;
-    }
-    .navbar{
-        padding: 0;
-        background-color: #262626;
-    }
-    .nav li a{
-        color:#8a8a8a;
-        width: auto;
-        display: block;
-        text-decoration: none;
-        background-color: transparent;
-        font-size: 12px;
-        font-weight: 700;
-    }
-    .breadcumb-image{
-        background-image: url('https://images.unsplash.com/photo-1605296867304-46d5465a13f1?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80');
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: cover;
-        background-attachment: fixed;
-        height: 300px;
-    }
-    .breadcumb-image{
-        display: flex;
-        flex-direction:column;
-        justify-content: center;
-        align-items: center;
-        color: #fff;
-    }
-    .bg-overlay{
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-    }
-    </style>
+      <style>
+          .navbar{
+              padding: 0;
+              background-color: #262626;
+          }
+          .navbar .nav-link:hover{
+              border-bottom:1px solid white;
+              transition:border 0.2s;
+          }
+          .navbar-nav a{
+              font-size:16px;
+              font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+          }
+          .navbar-brand{
+              font-size: 45px;
+          }
+          .breadcumb-image{
+              background-image: url('https://images.unsplash.com/photo-1605296867304-46d5465a13f1?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80');
+              background-position: center;
+              background-repeat: no-repeat;
+              background-size: cover;
+              background-attachment: fixed;
+              height: 300px;
+          }
+          .breadcumb-image{
+              display: flex;
+              flex-direction:column;
+              justify-content: center;
+              align-items: center;
+              color: #fff;
+          }
+          .bg-overley{
+              position: absolute;
+              top: 0;
+              left: 0;
+              right: 0;
+              bottom: 0;
+          }
+          .nav li a {
+            color: #8a8a8a;
+            width: auto;
+            display: block;
+            text-decoration: none;
+            background-color: transparent;
+            font-size: 12px;
+            font-weight: 700;
+        }
+      </style>
     <title>Product</title>
   </head>
   <body>
@@ -84,11 +88,11 @@
           <li class="nav-item">
             <a class="nav-link" href="/notifications">NOTIFICATION</a>
           </li>
-          <% if (currentUser) { %>
+           <% if (currentUser) { %>
             <li class="nav-item ">
               <a class="nav-link" href="#"><span style="color:#f1eeee">WELCOME <%= (currentUser.username).toUpperCase() %></span></a>
             </li>
-          <% } %>
+          <% } %> 
           
         </ul>
       </div>
