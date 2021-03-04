@@ -24,7 +24,7 @@ const http = require('http')
 //Database Setup
 var dbUrl="mongodb://localhost:27017/ogt" 
 if(process.env.NODE_ENV="production"){
-    dbUUrl=process.env.DB_URL;
+    dbUrl=process.env.DB_URL;
 }
 //   process.env.DB_URL
 mongoose.connect(dbUrl,
