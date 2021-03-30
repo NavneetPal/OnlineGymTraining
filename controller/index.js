@@ -1,9 +1,11 @@
+const Product =require('../models/product');
 module.exports={
     showHomePage:(req,res)=>{
         res.redirect('/ogt');
     },
-    showHome:(req,res)=>{
-        res.render('home');
+    showHome:async(req,res)=>{
+        const products=await Product.find({},'title image price').limit(5); 
+        res.render('home',{products});
     },
     subscribeNewsletter:(req,res)=>{
         const {email,js}=req.body;

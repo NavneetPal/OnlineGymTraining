@@ -1,5 +1,4 @@
 const User=require('../models/user');
-
 module.exports={
     signin:(req,res)=>{
         const redirectUrl=req.session.returnTo || '/ogt';
@@ -19,7 +18,7 @@ module.exports={
             res.redirect('/ogt');
         })
         console.log(registeredUser);
-        res.redirect('/');
+        res.redirect('/'); 
     },
     showSignupForm:(req,res)=>{
         res.render('users/signup');

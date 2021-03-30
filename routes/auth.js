@@ -1,6 +1,6 @@
 const express=require('express');
 const router=express.Router();
-const passport=require('passport')
+const passport=require('passport');
 const {isLoggedIn}=require('../middleware/middleware');
 const {signin,signup,signout,showSignupForm,showSigninForm}=require('../controller/auth');
 

@@ -1,6 +1,6 @@
 const Blog=require('../models/blog');
 module.exports={
-    showAllNotification:(req,res)=>{
+    showAllNotification:async(req,res)=>{
         Blog.find({},function(err,blogs){
             if(err)
             {

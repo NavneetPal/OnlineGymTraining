@@ -75,5 +75,4 @@ signupbtn.addEventListener('click',(e)=>{
         failure.classList.add('show');
         $('#failure').show();
     }
-    
 })

@@ -1,3 +1,4 @@
+require('dotenv').config()
 const express=require("express");
 const app=express();
 const session=require('express-session')
@@ -7,7 +8,6 @@ const path=require('path');
 const { v4: uuid}=require('uuid');
 var methodOverride = require('method-override');
 const mongoose=require('mongoose');
-require('dotenv').config()
 const passport=require('passport');
 const LocalStrategy=require('passport-local');
 const User=require('./models/user');
@@ -16,9 +16,8 @@ const indexRoutes=require('./routes/index');
 const blogRoutes=require('./routes/blog');
 const productRoutes=require('./routes/product');
 const authRoutes=require('./routes/auth');
+const commentRoutes=require('./routes/comment');
 
-const find = require('find-process')
-const http = require('http')
 
 
 //Database Setup
@@ -42,15 +41,10 @@ mongoose.connect(dbUrl,
     console.log(err);
 })
 
-
-
-
-
-
-
 //Middleware
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(bodyParser.json());
+
 app.set('view engine','ejs');
 app.set('views',path.join(__dirname,'/views'));
 app.use(express.static(path.join(__dirname,'public')));
@@ -98,42 +92,16 @@ app.use((req,res,next)=>{
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 //Main routes Handling
 app.use('/notifications',blogRoutes);
-app.use('/products',productRoutes);
+app.use('/product',productRoutes);
+app.use('/product/:id/comments',commentRoutes);
 app.use('/',indexRoutes)
 app.use('/',authRoutes)
 
 
-
-
-
- 
-
- 
-
-
-//Port setup
-const PORT=process.env.PORT ||8080 ;
-
-
-
+//server
+const PORT=8080;
 app.listen(PORT,()=>{
     console.log(`Server started on ${PORT} port`);
 })
