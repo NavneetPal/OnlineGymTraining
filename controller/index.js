@@ -1,4 +1,5 @@
 const Product =require('../models/product');
+const request=require('request');
 module.exports={
     showHomePage:(req,res)=>{
         res.redirect('/ogt');
