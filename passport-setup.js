@@ -1,6 +1,6 @@
 const passport =require('passport');
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
-
+const User=require('./models/user');
 passport.serializeUser(function(user, done) {
   done(null, user.id);
 });
@@ -19,7 +19,7 @@ passport.use(new GoogleStrategy({
   },
   function(accessToken, refreshToken, profile, cb) {
     //use the profile info(mainly profile id) to check if the user is registered in ur db
-    User.findOrCreate({ googleId: profile.id }, function (err, user) {
+    User.findOrCreate({ email: profile.email }, function (err, user) {
       return cb(err, user);
     });
   }
