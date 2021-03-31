@@ -17,6 +17,7 @@ const blogRoutes=require('./routes/blog');
 const productRoutes=require('./routes/product');
 const authRoutes=require('./routes/auth');
 const commentRoutes=require('./routes/comment');
+require('./passport-setup');
 
 
 
@@ -98,6 +99,15 @@ app.use('/product',productRoutes);
 app.use('/product/:id/comments',commentRoutes);
 app.use('/',indexRoutes)
 app.use('/',authRoutes)
+app.get('/google',
+  passport.authenticate('google', { scope: ['profile','email'] }));
+
+app.get('/google/callback', 
+  passport.authenticate('google', { failureRedirect: '/login' }),
+  function(req, res) {
+    // Successful authentication, redirect home.
+    res.redirect('/');
+  });
 
 
 //server
