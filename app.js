@@ -15,6 +15,7 @@ const MongoStore = require('connect-mongo')(session);
 const fp=require('find-free-port');
 const Confirm=require('prompt-confirm');
 const chalk=require('chalk');
+const flash=require('connect-flash');
 
 
 
@@ -62,6 +63,7 @@ app.use(express.json());
 app.use(methodOverride('_method'))
 
 
+
 const secret=process.env.SECRET || 'thisshouldbeabettersecret!' ;
 const store=new MongoStore({
     url:dbUrl,
@@ -87,6 +89,10 @@ const sessionConfig={
 }
 app.use(session(sessionConfig))
 
+//with the flash middleware in place all request will have a  req.flash() function that can
+//be used for flash messages
+app.use(flash());
+
 app.use(passport.initialize())
 app.use(passport.session())
 
@@ -101,6 +107,8 @@ passport.deserializeUser(User.deserializeUser()); //Generates a function that is
 app.use((req,res,next)=>{
     console.log(req.session)
     res.locals.currentUser=req.user;
+    res.locals.success=req.flash('success')
+    res.locals.error=req.flash('error')
     next();
 })
 

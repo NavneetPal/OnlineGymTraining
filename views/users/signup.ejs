@@ -17,6 +17,25 @@
 
 <body>
 
+  <div class="container">
+    <% if(error && error.length > 0){ %>
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <%= error %>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    <% } %>
+    <% if(success && success.length > 0){ %>
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <%= success %>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    <% } %>
+ </div>
+
   <!--To display an alert message when required field is not submitted-->
   <div id="failure" class="alert alert-danger alert-dismissible fade" role="alert">
     <strong>Mandotory</strong> Please fill out all the required field in the form.

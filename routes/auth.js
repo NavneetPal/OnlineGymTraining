@@ -7,7 +7,8 @@ const {signin,signup,signout,showSignupForm,showSigninForm}=require('../controll
 router.get('/signup',showSignupForm);
 router.post('/signup',signup);
 router.get("/signin",showSigninForm);
-router.post("/signin",passport.authenticate('local',{failureRedirect:'/signin'}),signin);
+//passport authenticate function take the strategy(like local,google,twitter) and then some options
+router.post("/signin",passport.authenticate('local',{failureFlash:true,failureRedirect:'/signin'}),signin);
 router.get('/signout',signout);
 
 module.exports=router;

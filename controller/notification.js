@@ -17,7 +17,7 @@ module.exports={
         res.render("notifications/new");
     },
     createNewNotification:(req,res)=>{
-       const upload= setup.single('image')
+       const upload= setup.single('image');
         upload(req,res,function(err){
             if(err){
                 res.json({
@@ -26,7 +26,7 @@ module.exports={
             }
             const {title,description}=req.body;
             console.log(req.file);
-            let file=path.join('uploads',req.file.filename)
+            let file=path.join('/uploads',req.file.filename)
             Blog.create({
                 title:title,
                 image:file,
