@@ -114,7 +114,7 @@
             <div class="col-md-9">
                 <% blogs.forEach(blog => { %>
                 <div class="mb-5">
-                    <img class="img-fluid" width="100%" src="<%= blog.image %>">
+                    <img class="img-fluid" width="100%" src="<%= blog.image%>">
                     <div class="mt-4">
                         <h4 style="font-size:30px;"><a href="/notifications/<%= blog._id%>"><%=blog.title %></a></h4>
                         <p> <%= blog.description.substring(0,100) %>.......... </p>

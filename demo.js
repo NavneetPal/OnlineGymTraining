@@ -12,13 +12,6 @@ const passport=require('passport');
 const LocalStrategy=require('passport-local');
 const User=require('./models/user');
 const MongoStore = require('connect-mongo')(session);
-const fp=require('find-free-port');
-const Confirm=require('prompt-confirm');
-const chalk=require('chalk');
-
-
-
-//requiring routes
 const indexRoutes=require('./routes/index');
 const blogRoutes=require('./routes/blog');
 const productRoutes=require('./routes/product');
@@ -27,12 +20,12 @@ const commentRoutes=require('./routes/comment');
 
 
 
-
-//Database Connection Setup
+//Database Setup
 var dbUrl="mongodb://localhost:27017/ogt" 
 if(process.env.NODE_ENV="production"){
     dbUrl=process.env.DB_URL;
 }
+//   process.env.DB_URL
 mongoose.connect(dbUrl,
 {
     useNewUrlParser:true,
@@ -41,7 +34,7 @@ mongoose.connect(dbUrl,
     useCreateIndex:true
 })
 .then(()=>{
-    console.log(chalk.yellow("DB Connected Properly"));
+    console.log("DB Connected..");
 })
 .catch(err=>{
     console.log("Oh..NO..ERROR");
@@ -51,8 +44,6 @@ mongoose.connect(dbUrl,
 //Middleware
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(bodyParser.json());
-app.use('/uploads',express.static('uploads'));
-
 
 app.set('view engine','ejs');
 app.set('views',path.join(__dirname,'/views'));
@@ -68,12 +59,11 @@ const store=new MongoStore({
     secret,
     touchAfter:24*60*60
 })
+
 store.on("error",function(e){
     console.log("SESSION STORE ERROR",e);
 })
 
-
-//PASSPORT CONFIGURATION
 const sessionConfig={
     store,
     secret,
@@ -89,14 +79,9 @@ app.use(session(sessionConfig))
 
 app.use(passport.initialize())
 app.use(passport.session())
-
-//User.authenticate(),User.serializeUser() and User.deserializeUser() are static methods provided by passport-local-mongoose 
 passport.use(new LocalStrategy(User.authenticate()));
-passport.serializeUser(User.serializeUser()); //Genearates a function that is used by passport to serialize user into session
-passport.deserializeUser(User.deserializeUser()); //Generates a function that is used by passport to deserialize user into session
-
-
-
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
 
 app.use((req,res,next)=>{
     console.log(req.session)
@@ -115,40 +100,10 @@ app.use('/',indexRoutes)
 app.use('/',authRoutes)
 
 
-
-//Error Handling
-app.use((err,req,res,next)=>{
-      console.log(err);
+//server
+const PORT=process.env.PORT || 8080;
+app.listen(PORT,()=>{
+    console.log(`Server started on ${PORT} port`);
 })
-
-
-
-//server setup
-let PORT=parseInt(process.env.PORT) || 8080;
-listenServer();
-process.on('uncaughtException', (error) => {
-    if (error.code === 'EADDRINUSE') {
-        fp(PORT).then(([freep]) => {
-            new Confirm(`Port no ${PORT} is busy.Do you want to run it on the avalibale port (${freep})?`)
-            .run()
-            .then(answer=>{
-                if(answer){
-                    PORT=parseInt(freep); 
-                    listenServer();
-                }
-            })
-        })
-    }
-})  
-
-function listenServer(){
-    app.listen(PORT,()=>{
-        console.log(chalk.yellow(`server is listenining on port ${PORT}`));
-    }) 
-}
-
-
-
-
 
 
