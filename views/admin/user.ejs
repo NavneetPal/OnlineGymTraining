@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User</title>
+    <link rel="stylesheet" href="css/user.css">
+    <style>
+        #div1{
+            background-color: #ffc478;
+        }
+        #notification{
+            display:flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+        #notification div{
+            display:inline-block;
+            margin:20px;
+            padding:10px 60px 20px;
+            border:1px solid black;
+            text-align:center;
+        }
+        .notificationno{
+            font-size:23px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h2 id="adminName">Hello, <%= currentUser.username %> </h2>
+        <div class="dashboard">
+            <ul>
+                <hr>
+                <li><a href="/dashboard">Dashboard</a></li>
+                <hr>
+                <li><a href="/adminNotification">Users</a></li>
+                <hr>
+                <li><a href="/adminUser">Manage User</a></li>
+                <hr>
+                <li><a href="/signout">Logout</a></li>
+                <hr>
+            </ul>
+        </div>
+    </header>
+    <main>
+        <div class="container">
+            <% if(error && error.length > 0){ %>
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <%= error %>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            <% } %>
+            <% if(success && success.length > 0){ %>
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    <%= success %>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            <% } %>
+        </div>
+
+        <h2>User</h2>
+        <section id="notification">
+            <div id="div1">
+                <h3>Total Users</h3>
+                <p class="notificationno"><%= users.length %>  </p>
+            </div>
+        </section>
+
+        <h2>Add User</h2>
+        <section class="form">
+            <form action="#" id="userForm">
+                <div id="input">
+                    <input type="text" name="name" id="name" placeholder="Name" required>
+                    <input type="email" name="email" id="email" placeholder="Email" required>
+                    <input type="password" name="password" id="password" placeholder="Password" required>
+                    <input type="text" name="birthdate" id="birthdate" placeholder="Birthdate(dd/mm/yyyy)" required>
+                </div>
+                <div class="right">
+                    <button type="submit" id="btn1">Add User</button>
+                </div>
+            </form>
+            <div class="right">
+                <button id="btn2" >Update User</button>
+            </div>
+        </section> 
+       
+        <section class="table">
+            <h2>User List</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Username</th>
+                        <th>Email</th>
+                        <th>role</th>
+                    </tr>
+                </thead>
+                <tbody id="tbody">
+                    <% users.forEach(user => { %>
+                     <tr>
+                        <td><%= user.username %> </td>
+                         <td><%= user.email %> </td>
+                         <td><%= user.role %> </td>
+                     </tr>
+                    <% }) %>
+                </tbody>
+            </table>
+        </section>
+       
+    </main>
+</body>
+</html>

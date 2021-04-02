@@ -1,0 +1,59 @@
+body{
+    margin:0;
+    display:flex;
+}
+header{
+    max-width:25%;
+    min-height:100vh;
+    background-color:#ce8d16dc;
+    color:white;
+    text-align:center;
+}
+main{
+    width:75%;
+}
+h2{
+    margin:0;
+    padding:30px;
+}
+header div{
+    margin-top:100px;
+}
+header div ul{
+    padding:0;
+}
+header div ul li{
+    display:block;
+    margin:20px;
+}
+
+header div ul li a{
+    color:white;
+    text-decoration:none;
+    font-size:24px;
+}
+
+#user{
+    display:flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+#user div{
+    display:inline-block;
+    margin:20px;
+    padding:10px 60px 20px;
+    border:1px solid black;
+    text-align:center;
+}
+#div1{
+    background-color: #ffc478;
+}
+#div3{
+    background-color:#ffb4b4;
+}
+#div2{
+    background-color:#726a95;
+}
+.userno{
+    font-size:23px;
+}

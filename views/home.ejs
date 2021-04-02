@@ -36,6 +36,11 @@
                 <li class="nav-item">
                   <a class="nav-link" href="/notifications">NOTIFICATION</a>
                 </li>
+                <% if (currentUser && currentUser.role===1) { %>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/admin">ADMIN DASHBOARD</a>
+                  </li>
+                <% } %>
                 <% if (currentUser) { %>
                   <li class="nav-item ">
                     <a class="nav-link" href="#"><span style="color:#f1eeee">WELCOME <%= (currentUser.username).toUpperCase() %></span></a>
@@ -407,6 +412,7 @@
              <div id="signup">
               <h3 class="jointitle" >JOIN US FOR FREE TO GET INSTANT <span style="color: #fc636b;">EMAIL UPDATES!</span></h3>
               <p class="joinpara">Subscribe and get notified at first on the latest update and offers!</p>
+
               <form action="/subscribe" method="POST" class="form-inline mt-5 text-center">
                 <div class="input-group input-group-lg">
                   <input type="email" id="email" name="email"  style="background: #f1eeee; border:none;color: #232020;" class="form-control" placeholder="Your Email Here" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
@@ -415,14 +421,18 @@
                   </div>
                 </div>
               </form>
+
               <div>
                 <p id="error" class="error lead">Please enter an email</p>
               </div>
              </div>
+
+             
              <div id="success" class="inner-form" style="margin-top:100px;margin-left:100px;" >
               <h3 class="jointitle">CONFIRM YOUR <span style="color: #fc636b;">EMAIL NOW!</span></h2>
               <p class="joinpara">The last step is to confirm your email. Give it a couple minutes!</p>
             </div>
+
            </div>
            <div class="col-md-6 d-none d-md-block">
              <img src="/imgs/subscribe.jpg"  class="img-fluid" style="height: 25em;width:100%;" alt="" >

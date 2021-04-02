@@ -25,7 +25,7 @@ const blogRoutes=require('./routes/blog');
 const productRoutes=require('./routes/product');
 const authRoutes=require('./routes/auth');
 const commentRoutes=require('./routes/comment');
-require('./passport-setup');
+const adminRoutes=require('./routes/admin')
 
 
 
@@ -59,8 +59,8 @@ app.use('/uploads',express.static('uploads'));
 app.set('view engine','ejs');
 app.set('views',path.join(__dirname,'/views'));
 app.use(express.static(path.join(__dirname,'public')));
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
+//app.use(express.urlencoded({ extended: true }));
+//app.use(express.json());
 app.use(methodOverride('_method'))
 
 
@@ -122,15 +122,8 @@ app.use('/product',productRoutes);
 app.use('/product/:id/comments',commentRoutes);
 app.use('/',indexRoutes)
 app.use('/',authRoutes)
-app.get('/google',
-  passport.authenticate('google', { scope: ['profile','email'] }));
+app.use('/',adminRoutes)
 
-app.get('/google/callback', 
-  passport.authenticate('google', { failureRedirect: '/login' }),
-  function(req, res) {
-    // Successful authentication, redirect home.
-    res.redirect('/');
-  });
 
 
 

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User</title>
+     <link rel="stylesheet" href="css/dashboard.css">
+</head>
+<body>
+    <header>
+        <h2 id="adminName">Hello, <%= currentUser.username %> </h2>
+        <div class="dashboard">
+            <ul>
+                <hr>
+                <li><a href="/dashboard">Dashboard</a></li>
+                <hr>
+                <li><a href="/adminNotification">Manage Notifications</a></li>
+                <hr>
+                <li><a href="/adminUser">Manage User</a></li>
+                <hr>
+                <li><a href="/signout">Logout</a></li>
+                <hr>
+            </ul>
+        </div>
+    </header>
+    <main>
+        <h2>Dashboard</h2>
+        <section id="user">
+            <div id="div1">
+                <h3>Total Users</h3>
+                <p  class="userno"><%= users.length %> </p>
+            </div>
+            <div id="div2">
+                <h3>Total Products</h3>
+                <p class="userno"><%= products.length %> </p>
+            </div>
+            <div id="div3">
+                <h3>Total Notifications</h3>
+                <p class="userno"><%= notifications.length %> </p>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

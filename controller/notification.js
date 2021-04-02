@@ -32,10 +32,12 @@ module.exports={
                 image:file,
                 description:description
             }).then(blog=>{
-                res.redirect('/notifications');
+                req.flash('success',`Added ${blog.title} notification Sucessfully`)
+                res.redirect('/adminNotification');
             })
             .catch(err=>{
-                res.render("notifications/new");
+                req.flash('error',err.message)
+                res.redirect("/adminNotification");
             })
                 
         })
@@ -61,22 +63,48 @@ module.exports={
         })
     },
     updateNotification:(req,res)=>{
-        Blog.findByIdAndUpdate(req.params.id,req.body.blog,function(err,updateBlog){
-            if(err)
-            {
-                res.redirect("/notifications");
-            } else{
-                res.redirect("/notifications/"+req.params.id);
+        const upload=setup.single('image');
+        upload(req,res,err=>{
+            if(err){
+                req.flash('error',err.message);
+                res.redirect('/adminNotification');
             }
+            const {title,description}=req.body;
+            let dataRecords;
+            if(req.file){
+                dataRecords={
+                    title:title,
+                    description:description,
+                    image:path.join('/uploads',req.file.fileName)
+                }
+            }else{
+                dataRecords={
+                    title:title,
+                    description:description
+                }
+            }
+            Blog.findByIdAndUpdate(req.params.id,dataRecords,function(err,updateBlog){
+                if(err)
+                {
+                    req.flash('error',err.message);
+                    res.redirect("/adminNotification");
+                } else{
+                    req.flash('success',`Updated ${updateBlog.title} successfully `)
+                    res.redirect("/adminNotification");
+                }
+            })
         })
+       
     },
     deleteNotification:(req,res)=>{
         Blog.findByIdAndRemove(req.params.id,function(err){
             if(err)
             {
-                res.redirect("/notifications");
+                req.flash('error',err.message)
+                res.redirect("/adminNotification");
             }else {
-                res.redirect("/notifications");
+                req.flash('success',`Deleted notification successFully`)
+                res.redirect("/adminNotification");
             }
         })
     }

@@ -1,0 +1,29 @@
+h1{
+    text-align:center;
+}
+.login{
+    background-color:antiquewhite;
+    width:300px;
+    margin:0 auto;
+    text-align:center;
+    border:1px solid black;
+    padding:10px 10px 20px 10px;
+}
+.login input,
+.login button{
+    display:block;
+    margin:10px;
+    width:90%;
+    height:30px;
+}
+.login button{
+    background-color:orange;
+    height:30px;
+    color:white;
+    height:35px;
+    font-size:18px;
+}
+.login button a{
+    text-decoration:none;
+    color:white;
+}

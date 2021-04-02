@@ -13,6 +13,11 @@ const UserSchema=new mongoose.Schema({
         type:String,
         required:true,
         trim:true
+    },
+    role:{
+        type:Number,
+        required:false,
+        default:0
     }
 })
 //It will add the username,hash and salt field to store the username,the hashed password and the salt value
