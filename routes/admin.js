@@ -23,6 +23,32 @@ router.get('/adminUser',isLoggedIn,isAdmin,async(req,res,next)=>{
     res.render('admin/user',{users});
 })
 
+router.post('/adminsignup',async(req,res,next)=>{
+    try {
+        const {username,email,password}=req.body;
+        const user=new User({
+            email:email,
+            username:username
+        })
+        const registeredUser=await User.register(user,password);
+        req.flash('success',`User ${registeredUser.username} successfully created`);
+        res.redirect('/adminUser');
+    } catch (err) {
+        req.flash('error',err.message);
+        res.redirect('/adminUser');
+    }
+})
 
+
+router.delete('/adminUser/:id',(req,res,next)=>{
+    User.findByIdAndDelete(req.params.id,(err,user)=>{
+        if(err){
+            req.flash('error',err.user);
+            res.redirect('/adminUser')
+        }
+        req.flash('success',`User ${user.username} deleted successfully`);
+        res.redirect('/adminUser');
+    })
+})
 
 module.exports=router;
