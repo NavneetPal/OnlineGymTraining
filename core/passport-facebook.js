@@ -7,7 +7,7 @@ module.exports=function(passport){
         clientID: process.env.FACEBOOK_APP_ID,
         clientSecret: process.env.FACEBOOK_APP_SECRET,
         callbackURL: "https://pacific-fjord-36977.herokuapp.com/auth/facebook/callback",
-        
+        profileFields: ['id', 'emails', 'displayName']
       },
       async function(accessToken, refreshToken, profile, done) {
         try {
