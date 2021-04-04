@@ -14,4 +14,13 @@ router.get(
     }
 )
 
+router.get('/facebook',passport.authenticate('facebook'))
+
+router.get('/facebook/callback', 
+  passport.authenticate('facebook', { failureRedirect: '/signin' }),
+  (req, res)=>{
+    // Successful authentication, redirect home.
+    res.redirect('/ogt');
+  });
+
 module.exports=router
