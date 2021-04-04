@@ -6,9 +6,7 @@ module.exports=function(passport){
     passport.use(new FacebookStrategy({
         clientID: process.env.FACEBOOK_APP_ID,
         clientSecret: process.env.FACEBOOK_APP_SECRET,
-        callbackURL: "https://pacific-fjord-36977.herokuapp.com/auth/facebook/callback",
-        passReqToCallback:true,
-        profileFields:['id','displayName','emails']
+        callbackURL: "https://pacific-fjord-36977.herokuapp.com/auth/facebook/callback"
       },
       async function(accessToken, refreshToken, profile, done) {
         try {
@@ -44,7 +42,6 @@ module.exports=function(passport){
         } catch (error) {
           done(error,false)
         }
-        console.log(profile);
       }
     ));
 }
