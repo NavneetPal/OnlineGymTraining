@@ -14,6 +14,7 @@ module.exports=function(passport){
           username:profile.displayName,
           facebookId:profile.id
         });
+
         try {
           const currentUser=await User.findOne({facebookId:profile.id});
           if(!currentUser){
@@ -23,7 +24,7 @@ module.exports=function(passport){
             done(null,currentUser);
           }
         } catch (error) {
-          done(error)
+          done(error,false)
         }
         console.log(profile);
       }
