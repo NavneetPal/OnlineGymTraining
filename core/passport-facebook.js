@@ -6,7 +6,8 @@ module.exports=function(passport){
     passport.use(new FacebookStrategy({
         clientID: process.env.FACEBOOK_APP_ID,
         clientSecret: process.env.FACEBOOK_APP_SECRET,
-        callbackURL: "https://pacific-fjord-36977.herokuapp.com/auth/facebook/callback"
+        callbackURL: "https://pacific-fjord-36977.herokuapp.com/auth/facebook/callback",
+        
       },
       async function(accessToken, refreshToken, profile, done) {
         try {
@@ -14,7 +15,7 @@ module.exports=function(passport){
           if(currentUser){
               done(null,currentUser);
           }
-
+          console.log(profile);
           const email=profile.emails[0].value;
           const username=profile.displayName;
 

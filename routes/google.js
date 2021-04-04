@@ -14,7 +14,7 @@ router.get(
     }
 )
 
-router.get('/facebook',passport.authenticate('facebook',{scope:['email']}))
+router.get('/facebook',passport.authenticate('facebook',{scope:['profile','email']}))
 
 router.get('/facebook/callback', 
   passport.authenticate('facebook', { failureRedirect: '/signin' }),
