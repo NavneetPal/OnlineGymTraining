@@ -31,6 +31,7 @@ const googleRoutes=require('./routes/google')
 
 //google passport config
 require('./core/passport-google')(passport)
+require('./core/passport-facebook')(passport)
 
 
 //Database Connection Setup
