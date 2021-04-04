@@ -1,6 +1,6 @@
 module.exports={
     isLoggedIn:(req,res,next)=>{
-
+       //passport adds the isAuthenticated() method to the request object
         if(!req.isAuthenticated()){
            //here we are storing the url of the user when they are not authenticated so that we can redirect them to these url after they are loggedIn
             req.flash('error','You must be logged in First!')

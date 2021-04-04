@@ -12,14 +12,22 @@ const UserSchema=new mongoose.Schema({
     username:{
         type:String,
         required:true,
-        trim:true
+        trim:true,
+        unique:true
     },
     role:{
         type:Number,
         required:false,
         default:0
+    },
+    googleId:{
+        type:String
     }
 })
+
+UserSchema.statics.checkExistingField = function(field, value){
+    return this.findOne({ [`${field}`]: value });
+};
 //It will add the username,hash and salt field to store the username,the hashed password and the salt value
 UserSchema.plugin(passportLocalMongoose)
 

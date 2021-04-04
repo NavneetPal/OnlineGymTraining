@@ -18,7 +18,7 @@ const chalk=require('chalk');
 const flash=require('connect-flash');
 
 
-
+ 
 //requiring routes
 const indexRoutes=require('./routes/index');
 const blogRoutes=require('./routes/blog');
@@ -26,8 +26,11 @@ const productRoutes=require('./routes/product');
 const authRoutes=require('./routes/auth');
 const commentRoutes=require('./routes/comment');
 const adminRoutes=require('./routes/admin')
+const googleRoutes=require('./routes/google')
 
 
+//google passport config
+require('./core/passport-google')(passport)
 
 
 //Database Connection Setup
@@ -42,8 +45,8 @@ mongoose.connect(dbUrl,
     useFindAndModify:false,
     useCreateIndex:true
 })
-.then(()=>{
-    console.log(chalk.yellow("DB Connected Properly"));
+.then((conn)=>{
+    console.log(chalk.yellow(`DB Connected Properly: ${conn.connection.host}`));
 })
 .catch(err=>{
     console.log("Oh..NO..ERROR");
@@ -123,6 +126,7 @@ app.use('/product/:id/comments',commentRoutes);
 app.use('/',indexRoutes)
 app.use('/',authRoutes)
 app.use('/',adminRoutes)
+app.use('/auth',googleRoutes)
 
 
 
