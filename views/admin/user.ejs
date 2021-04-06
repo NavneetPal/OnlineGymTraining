@@ -44,6 +44,8 @@
                 <hr>
                 <li><a href="/adminUser">Manage User</a></li>
                 <hr>
+                <li><a href="/ogt">HomePage</a></li>
+                <hr>
                 <li><a href="/signout">Logout</a></li>
                 <hr>
             </ul>
@@ -110,7 +112,11 @@
                      <tr>
                         <td><%= user.username %> </td>
                          <td><%= user.email %> </td>
-                         <td><%= user.role %> </td>
+                         <% if (user.role===0) { %>
+                          <td>User</td>
+                         <% }else{ %>
+                            <td>Admin</td>
+                         <% } %>
                          <td><a ><i class="fas fa-pencil-alt"></i></a> &nbsp;&nbsp;<form style="display:inline"  action="/adminUser/<%=user._id %>?_method=DELETE" method="POST">
                             <button><i class="fa fa-trash" aria-hidden="true"></i></button>
                         </form></td>

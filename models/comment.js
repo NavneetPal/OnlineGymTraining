@@ -6,6 +6,9 @@ const commentSchema=new mongoose.Schema({
       required:true,
       trim:true
   },
+  rating:{
+    type:Number
+  },
   author:{
       id:{
           type:mongoose.Schema.Types.ObjectId,

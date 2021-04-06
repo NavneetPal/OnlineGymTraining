@@ -16,6 +16,7 @@ const fp=require('find-free-port');
 const Confirm=require('prompt-confirm');
 const chalk=require('chalk');
 const flash=require('connect-flash');
+const mongoSanitize=require('express-mongo-sanitize')
 
 
  
@@ -63,9 +64,8 @@ app.use('/uploads',express.static('uploads'));
 app.set('view engine','ejs');
 app.set('views',path.join(__dirname,'/views'));
 app.use(express.static(path.join(__dirname,'public')));
-//app.use(express.urlencoded({ extended: true }));
-//app.use(express.json());
 app.use(methodOverride('_method'))
+app.use(mongoSanitize());
 
 
 
@@ -88,6 +88,7 @@ const sessionConfig={
     saveUninitialized:true,
     cookie:{
         httpOnly:true,
+         //secure:true ,
         expires:Date.now()+1000*60*60*24*7,
         maxAge:1000*60*60*24*7
     }
