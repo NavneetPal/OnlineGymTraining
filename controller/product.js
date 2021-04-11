@@ -1,14 +1,15 @@
 const Product=require('../models/product');
+const setup=require('../core/multer');
+const path=require('path');
+
 module.exports={
     showProducts:async(req,res)=>{
         if(Object.keys(req.query).length===0){
             const products=await Product.find({});
-            console.log(products);
             res.render('store',{products})
         }else{
             const {minprice,maxprice}=req.query;
             const products=await Product.find({price:{$gte:minprice,$lte:maxprice}});
-            console.log(products);
             res.render('store',{products})
         }
        
@@ -17,12 +18,30 @@ module.exports={
         res.render('product/add')
     },
     addProduct:(req,res)=>{
-        Product.create(req.body)
-        .then(product=>{
-            res.redirect('/product');
-        })
-        .catch(err=>{
-            res.render('product/addProduct');
+        const upload=setup.single('image');
+        upload((req,res,err)=>{
+
+            if(err){
+                res.json({
+                    message:error
+                });
+            }
+            const {price,title,description}=req.body;
+            console.log(req.file);
+            let file=path.join('/uploads',req.file.filename)
+            Product.create({
+                title:title,
+                image:file,
+                description:description,
+                price:price
+            }).then(product=>{
+                req.flash('success',`Added ${product.title} notification Sucessfully`)
+                res.redirect('/adminProduct');
+            })
+            .catch(err=>{
+                req.flash('error',err.message)
+                res.redirect("/adminProduct");
+            })
         })
     },
     showProductById:async(req,res)=>{
