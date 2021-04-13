@@ -33,4 +33,24 @@ router.get('/cart',(req,res)=>{
     res.render('checkout',{products:cart.generateArray(),totalPrice:cart.totalPrice});
 })
 
+router.get('/reduce/:id',(req,res)=>{
+    const productId=req.params.id;
+    const cart=new Cart(req.session.cart? req.session.cart:{});
+
+    cart.reduceByOne(productId);
+    req.session.cart=cart;
+    res.redirect('/cart');
+})
+
+router.get('/increase/:id',(req,res)=>{
+    const productId=req.params.id;
+    const cart=new Cart(req.session.cart? req.session.cart:{});
+
+    cart.increaseByOne(productId);
+    req.session.cart=cart;
+    res.redirect('/cart');
+})
+
+
+
 module.exports=router;
