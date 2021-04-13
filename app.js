@@ -110,13 +110,17 @@ passport.deserializeUser(User.deserializeUser()); //Generates a function that is
 
 
 
+
 app.use((req,res,next)=>{
-  
+    console.log(req.session);
+    res.locals.session=req.session;
+    res.locals.cart=req.session.cart;
     res.locals.currentUser=req.user;
     res.locals.success=req.flash('success')
     res.locals.error=req.flash('error')
     next();
 })
+
 
 
 

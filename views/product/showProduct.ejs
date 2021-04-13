@@ -282,6 +282,19 @@
           <li class="nav-item">
             <a class="nav-link" href="/notifications">NOTIFICATION</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/cart">
+              <i class="fas fa-2x fa-shopping-cart">
+                <span class="badge bg-primary" style="font-size:10px">
+                  <% if (session.cart) { %>
+                    <%= session.cart.totalQty %> 
+                  <% }else{ %>
+                  0
+                  <% } %> 
+                </span>
+              </i>
+            </a>
+          </li>
            <% if (currentUser) { %>
             <li class="nav-item ">
               <a class="nav-link" href="#"><span style="color:#f1eeee">WELCOME <%= (currentUser.username).toUpperCase() %></span></a>
@@ -346,7 +359,7 @@
                             </select>
                         </div>
                         <div class="d-inline">
-                            <button class="btn btn-sm" style="font-size: 13px;color: #fff;background: #1d1d1d;">ADD TO CART</button>
+                            <a class="btn btn-sm" href="/addtocart/<%= product._id %> " style="font-size: 13px;color: #fff;background: #1d1d1d;">ADD TO CART</a>
                             <a class="btn btn-sm" href="checkout.html" style="font-size: 13px;color: #fff;background: #fb383b;">CHECKOUT</a>
                         </div>
                         <br>
