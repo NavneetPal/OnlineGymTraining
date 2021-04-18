@@ -53,7 +53,7 @@ router.get('/increase/:id',(req,res)=>{
     res.redirect('/cart');
 })
 
-const YOUR_DOMAIN='http://localhost:5000'
+const YOUR_DOMAIN='process.env.DOMAIN'
 
 router.post('/create-checkout-session',async (req, res) => {
     let cart=new Cart(req.session.cart);
