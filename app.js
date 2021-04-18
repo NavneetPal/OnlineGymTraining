@@ -136,6 +136,10 @@ app.use('/',authRoutes)
 app.use('/',adminRoutes)
 app.use('/auth',googleRoutes)
 
+app.get('*',(req,res)=>{
+    res.render('notFound');
+})
+
 
 
 

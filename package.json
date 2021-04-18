@@ -33,6 +33,7 @@
     "passport-local-mongoose": "^6.0.1",
     "prompt-confirm": "^2.0.4",
     "request": "^2.88.2",
+    "stripe": "^8.144.0",
     "uuid": "^8.3.2"
   },
   "devDependencies": {

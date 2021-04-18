@@ -10,15 +10,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans&display=swap" rel="stylesheet">
+    <script src="https://polyfill.io/v3/polyfill.min.js?version=3.52.1&features=fetch"></script>
+    <script src="https://js.stripe.com/v3/"></script>
     <link rel="stylesheet" href="css/checkout.css">
     <title>Product</title>
     <style>
-       /* .navbar .navbar-nav .nav-item a{
-          font-size:17px;
-          font-weight:700;
-          font-family: 'Nunito Sans', sans-serif;
-          color: #fff
-        }*/
         .navbar{
             padding: 0;
             background-color: #262626;
@@ -64,6 +60,12 @@
           .navbar.scrolled{
             background-color: #2b3636;
             transition:background-color 500ms;
+        }
+
+        #itemcart{
+          display:flex;
+          justify-content: center;
+          flex-direction: column;
         }
       
     </style>
@@ -120,17 +122,17 @@
 
     
     <!--Breadcumb Section-->
-    <div class="breadcumb-image">
+   <!--  <div class="breadcumb-image">
         <div class="bg-overlay" style="background-color:transparent"></div>
         <div class="breadcumb-title">
             <h2 class="font-bold text-uppercase">checkout</h2>
         </div>
-    </div>
+    </div> -->
     <!---Breadcumb Section over here-->
   
     <!-- Checkout Section -->
-    <% if (products) { %>
-      <div class="container">
+    <% if (products && products.length>0) { %>
+      <div class="container" style="margin-top:200px">
         <div class="ads-grid_shop">
         <div class="shop_inner_inf">
             <div class="privacy about">
@@ -216,7 +218,6 @@
                 </div>
                 <div class="col-md-8 address_form">
                 <h4>Add a new Details</h4>
-                <form action="payment.html" method="post" class="creditly-card-form agileinfo_form">
                     <section class="creditly-wrapper wrapper">
                     <div class="information-wrapper">
                         <div class="first-row form-group">
@@ -256,9 +257,8 @@
                         <button class="submit check_out">Delivery to this Address</button>
                     </div>
                     </section>
-                </form>
                 <div class="checkout-right-basket">
-                    <a href="payment.html">Make a Payment </a>
+                    <button class="btn btn-danger" id="checkout-button">Make a Payment </button>
                 </div>
                 </div>
 
@@ -272,10 +272,18 @@
         </div>
       </div>
     <% } else { %>
-      <div class="container">
+      <div class="container" style="margin-top:200px">
         <div class="row">
-          <div class="col-12">
-            <h1>NO ITEMS IN CART</h1>
+          <div id="itemcart" class="col-6">
+            <h1 style="font-size:4rem;">NO ITEMS IN <span style="color:#6c5ce7;">CART</span></h1>
+            <div>
+             <a class="btn btn-lg btn-primary" href="/store"><i class="fas fa-arrow-left"></i> Go to Store Section</a>
+            </div>
+          </div>
+          <div class="col-6">
+            <div>
+            <img src="imgs/emptyCart.svg" width="100%" alt="">
+            </div>
           </div>
         </div>
       </div>
@@ -336,7 +344,6 @@
     <!--Footer Over here-->
 
 
-
     <!-- Optional JavaScript; choose one of the two! -->
 
     <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
@@ -354,6 +361,35 @@
             $nav.toggleClass("scrolled", $(this).scrollTop() > $nav.height())
         })
     })
+
+    var stripe = Stripe("pk_test_51IhA52SJNQ4HNfwx6ce4L7E8oFXAGsmsfCCIhWn5evcLPlCU7UlJNNQbhAjgDfwAupAe41bpbc2G9p1h7jixPUF000h8erVDSA");
+    var checkoutButton = document.getElementById("checkout-button");
+
+  
+    checkoutButton.addEventListener("click", function () {
+      fetch("/create-checkout-session", {
+        method: "POST"
+      })
+        .then(function (response) {
+          return response.json();
+        })
+        .then(function (session) {
+          console.log(session);
+          return stripe.redirectToCheckout({ sessionId: session.id });
+        })
+        .then(function (result) {
+          // If redirectToCheckout fails due to a browser or network
+          // error, you should display the localized error message to your
+          // customer using error.message.
+
+          if (result.error) {
+            alert(result.error.message);
+          }
+        })
+        .catch(function (error) {
+          console.error("Error:", error);
+        });
+    });
     </script>
   </body>
 </html>
