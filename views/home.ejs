@@ -15,6 +15,9 @@
         background-color: #2b3636;
         transition:background-color 500ms;
     }
+    #traineranchor{
+      text-decoration: none;
+    }
     </style>
     
   </head>
@@ -134,27 +137,35 @@
       <div class="container">
         <h3 class="text-center pt-5 mb-5" style="color:whitesmoke;font-size:48px;letter-spacing:2px">Our Trainer</h3>
         <div class="row" id="teamcenter">
-          <div class="trainer">
-            <div class="card" style="width: 16rem;border-style: solid;border-color: black;">
-              <div class="container1">
-                <img src="/imgs/trainer1.jpg" class="image card-img-top img-fluid" style="height:260px" alt="...">
-                <div class="middle">
-                  <div class="text">Sam Will</div>
+
+          <% trainers.forEach(trainer => { %>
+            <a href="/trainer/<%= trainer._id %> " id="traineranchor" class="custom-card">
+              <div class="trainer">
+                <div class="card" style="width: 16rem;border-style: solid;border-color: black;">
+                  <div class="container1">
+                    <img src=<%= trainer.image %>  class="image card-img-top img-fluid" style="height:260px" alt="...">
+                    <div class="middle">
+                      <div class="text"><%= trainer.name %> </div>
+                    </div>
+                  </div>
+                  <div class="card-body">
+                    <h5 class="card-title text-center" style="color:#f65a5b;"><%= trainer.name %> </h5>
+                    <h6 class="card-subtitle text-center mb-2" style="color:black"><%= trainer.field %> </h6>
+                    <p class="card-text text-center" style="color:black">Lorem ipsum dolor sit amet, consectetuer adipiscing elit Lorem ipsum</p>
+                    <div class="d-flex mt-3 justify-content-between">
+                      <a href="#"><i class="fab fa-2x fa-facebook" style="color:#f65a5b;"></i></a>
+                      <a href="#"><i class="fa fa-2x fa-envelope" style="color:#f65a5b;"></i></a>
+                      <a href="#"><i class="fab fa-2x fa-twitter" style="color:#f65a5b;"></i></a>
+                    </div>
+                  </div>
                 </div>
               </div>
-              <div class="card-body">
-                <h5 class="card-title text-center" style="color:#f65a5b;">Sam Will</h5>
-                <h6 class="card-subtitle text-center mb-2">BodyBuilder</h6>
-                <p class="card-text text-center">Lorem ipsum dolor sit amet, consectetuer adipiscing elit Lorem ipsum</p>
-                <div class="d-flex justify-content-between">
-                  <a href="#"><i class="fab fa-2x fa-facebook" style="color:#f65a5b;"></i></a>
-                  <a href="#"><i class="fa fa-2x fa-envelope" style="color:#f65a5b;"></i></a>
-                  <a href="#"><i class="fab fa-2x fa-twitter" style="color:#f65a5b;"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="trainer">
+            </a>
+          <% }) %>
+          
+          
+
+          <!-- <div class="trainer">
             <div class="card" style="width: 16rem; border-style: solid;border-color: black;">
               <div class="container1">
                 <img src="/imgs/trainer2.jpg" class="image card-img-top img-fluid" style="height:260px" alt="...">
@@ -174,6 +185,7 @@
               </div>
             </div>
           </div>
+
           <div class="trainer">
             <div class="card" style="width: 16rem; border-style: solid;border-color: black;">
               <div class="container1">
@@ -194,6 +206,7 @@
               </div>
             </div>
           </div>
+
           <div class="trainer">
             <div class="card" style="width: 16rem; border-style: solid;border-color: black;">
               <div class="container1">
@@ -213,7 +226,8 @@
                 </div>
               </div>
             </div>
-          </div>
+          </div> -->
+
         </div>
       </div>
     </section>
@@ -328,89 +342,7 @@
             </a>
           <% }) %>
            
-          
-
-          <!-- <a href="/products" class="custom-card">
-            <div class="card mx-1 shadow-lg">
-              <img  src="./imgs/rubber-dumbbell-set.jpg"  class="card-img-top"  alt="...">
-              <div class="card-body">
-                <a href="/product" style="color: black;">Bodygrip BGRIP5440 Kettlebell, 7Kg (Multicolour)...</a>
-                <p class="card-text" style="font-size: 11px;">10% off with AU Bank Debit Cards...</p>
-                <p class="card-text"><small class="text-muted">
-                  <i class="fas fa-star text-warning"></i>
-                  <i class="fas fa-star text-warning"></i>
-                  <i class="fas fa-star text-warning"></i>
-                  <i class="fas fa-star-half-alt text-warning"></i>
-                  <i class="fas fa-star "></i>
-                  4.5 (18,560)</small>
-                  <span class="d-block"></span>
-                  <span class="float-right" >
-                    <small style="text-decoration: line-through;" class="text-muted">(₹5,000)</small>₹856  Save ₹4,144 (83%)</span>
-                </p>   
-              </div>
-            </div>
-          </a>
-          <a href="/products" class="custom-card">
-            <div class="card mx-1 shadow-lg " >
-              <img  src="./imgs/roller.jpg"  class="card-img-top" alt="...">
-              <div class="card-body ">
-                <a href="/products" style="color:black">N&M™ Anti Skid Double Wheel AB Roller Portable...</a>
-                <p class="card-text" style="font-size: 11px;">10% off with AU Bank Debit Cards...</p>
-                <p class="card-text"><small class="text-muted">
-                  <i class="fas fa-star text-warning"></i>
-                  <i class="fas fa-star text-warning"></i>
-                  <i class="fas fa-star text-warning"></i>
-                  <i class="fas fa-star text-warning"></i>
-                  <i class="fas fa-star-half-alt text-warning"></i>
-                  4.5 (18,560)</small>
-                  <span class="d-block"></span>
-                  <span class="float-right" >
-                    <small style="text-decoration: line-through;" class="text-muted">(₹999)</small>₹299 Save ₹700 (70%)</span>
-                </p>
-              </div>
-            </div>
-          </a>
-          <a href="/products" class="custom-card">
-            <div class="card mx-1 shadow-lg ">
-              <img  src="./imgs/dumbell-stand.jpg"  class="card-img-top"  alt="...">
-              <div class="card-body">
-                <a href="/products" style="color:black">RISE UP Dumbbell Stand & Standard Weight Multilevel...</a>
-                <p class="card-text" style="font-size: 11px;">Save extra with No Cost EMI...</p>
-                <p class="card-text"><small class="text-muted">
-                  <i class="fas fa-star text-warning"></i>
-                  <i class="fas fa-star text-warning"></i>
-                  <i class="fas fa-star text-warning"></i>
-                  <i class="fas fa-star text-warning"></i>
-                  <i class="fas fa-star-half-alt text-warning"></i>
-                  4.5 (18,560)</small>
-                  <span class="d-block"></span>
-                  <span class="float-right" >
-                    <small style="text-decoration: line-through;" class="text-muted">($199)</small>$9.99 </span>
-                    
-                </p> 
-              </div>
-            </div>
-          </a>
-          <a href="/products" class="custom-card">
-            <div class="card mx-1 shadow-lg ">
-              <img  src="./imgs/dumbel-plate.jpg"  class="card-img-top img-fluid"  alt="...">
-              <div class="card-body ">
-                <a href="/products" style="color:black">Aurion Weight Plate disc Vinyl Standard Weights Plates Set...</a>
-                <p class="card-text" style="font-size: 11px;">10% off with AU Bank Debit Cards...</p>
-                <p class="card-text"><small class="text-muted">
-                  <i class="fas fa-star text-warning"></i>
-                  <i class="fas fa-star text-warning"></i>
-                  <i class="fas fa-star text-warning"></i>
-                  <i class="fas fa-star text-warning"></i>
-                  <i class="fas fa-star-half-alt text-warning"></i>
-                  4.5 (18,560)</small>
-                  <span class="d-block"></span>
-                  <span class="float-right" > ₹1,495 </span>  
-                </p>
-              </div>
-            </div>
-          </a> -->
-
+        
         </div>
       </div>
       <div class="container storesectioncontent">

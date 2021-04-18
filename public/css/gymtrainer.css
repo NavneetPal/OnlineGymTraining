@@ -1,0 +1,160 @@
+/* body {
+    background: #ffffff;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 15px;
+    font-weight: 400;
+    color: #666666;
+    vertical-align: baseline;
+    line-height: 24px;
+} */
+
+.trainer-detail-image .trainer-info {
+    margin-top: 38px;
+}
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+/* body {
+    background: #ffffff;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 15px;
+    font-weight: 400;
+    color: #666666;
+    vertical-align: baseline;
+    line-height: 24px;
+} */
+.col-md-4 {
+    width: 33.33333333%;
+}
+
+.box{
+    height: 300px;
+    width: 100%;
+    background-color: black;
+    margin-bottom: 30px;
+}
+.div {
+    display: block;
+}
+.row{
+    display: flex;
+}
+.detail-image{
+    margin-left:0px;
+    margin-top: 10px;
+    box-sizing: border-box;
+
+}
+.detail-heading{
+    margin-left: 30px;
+    font-style: normal;
+    
+}
+.trainer-detail-image .trainer-info span {
+    color: #111111;
+    font-size: 18px;
+    padding-right: 8px;
+}
+
+
+
+.trainer-detail-image .trainer-info p {
+    margin-bottom: 8px;
+}
+p {
+    margin: 0 0 20px;
+        display: block;
+        margin-block-start: 1em;
+        margin-block-end: 1em;
+        margin-inline-start: 0px;
+        margin-inline-end: 0px;
+    
+}
+.trainer-detail-image .trainer-info ul {
+    margin-top: 38px;
+}
+
+
+ul {
+    display: block;
+    list-style-type: disc;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 40px;
+}
+
+ul li{
+  display: inline;
+}
+.trainer-detail-image .trainer-info li a {
+    border: 2px solid #fb5b21; 
+     border-radius: 50%;
+    height: 50px;
+    line-height: 35px;
+    margin-right: 5px;
+    text-align: center;
+    width: 50px;
+    color: #838383;
+}
+.trainer-detail-image .trainer-info li a:hover {
+    background: #fb5b21;
+    color: #ffffff;
+}
+
+a:active, a:hover {
+    outline: 0 none;
+}
+.degination{
+    font-family:Arial, Helvetica, sans-serif;
+}
+p {
+    margin: 0 0 20px;
+}
+.trainer-detail-content .detail-heading .title {
+    display: block;
+    color: #fb5b21;
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 30px;
+}
+p {
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+}
+ .skill-content-3 {
+    overflow: hidden;
+}
+.skill-content-3 h3 {
+    color: #fb5b21;
+    display: inline-block;
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 30px;
+    text-transform: capitalize;
+}
+.skill .progress {
+    background-color: #f0f0f0;
+    border-radius: 0;
+    box-shadow: none;
+    height: 5px;
+    margin: 30px 0 50px 0;
+    overflow: visible;
+    position: relative;
+}
+.skill .progress .lead {
+    color: #444;
+    font-size: 15px;
+    font-weight: 400;
+    left: 0;
+    position: absolute;
+    top: -30px;
+    z-index: 99;
+}

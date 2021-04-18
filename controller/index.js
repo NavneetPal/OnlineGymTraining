@@ -1,4 +1,5 @@
 const Product =require('../models/product');
+const Trainer =require('../models/trainer');
 const request=require('request');
 module.exports={
     showHomePage:(req,res)=>{
@@ -6,7 +7,8 @@ module.exports={
     },
     showHome:async(req,res)=>{
         const products=await Product.find({},'title image price').limit(5); 
-        res.render('home',{products});
+        const trainers=await Trainer.find({}).limit(4);
+        res.render('home',{products,trainers});
     },
     subscribeNewsletter:(req,res)=>{
         const {email,js}=req.body;

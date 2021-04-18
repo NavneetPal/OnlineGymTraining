@@ -1,1 +1,1 @@
-console.log(Date.now()+'-'+ 'dumbell.png')
+console.log(Date.now()+'-'+ 'trainer4.jpg')

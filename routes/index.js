@@ -3,11 +3,13 @@ const router=express.Router();
 const path=require('path');
 const User=require('../models/user');
 const Product=require('../models/product');
+const Trainer=require('../models/trainer');
 const Cart=require('../models/cart');
 const {isLoggedIn}=require('../middleware/middleware');
 const stripe = require('stripe')('sk_test_51IhA52SJNQ4HNfwxwSGREG5DnbF32CSa37OJhIBAHNNiu1MMyi8L1ajvXxHKQFCYEjewTnFdrqnpbGWsj17lshxF00nrYebIJk');
 const {showHomePage,showHome,subscribeNewsletter,showAboutPage}=require('../controller/index');
 const {showProducts}=require('../controller/product');
+const { reset } = require('chalk');
 
 router.get(("/"),showHomePage);
 router.get(("/ogt"),showHome);
@@ -96,6 +98,11 @@ router.get('/success',(req,res)=>{
 
 router.get('/cancel',(req,res)=>{
   res.render('cancel');
+})
+
+router.get('/trainer/:id',async(req,res)=>{
+  const trainer=await Trainer.findById(req.params.id);
+  res.render('trainer',{trainer});
 })
 
 

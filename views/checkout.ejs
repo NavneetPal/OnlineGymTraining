@@ -208,7 +208,9 @@
             </div>
             <div class="checkout-left">
                 <div class="col-md-4 checkout-left-basket">
-                <h4>Continue to basket</h4>
+                <div style="display:flex;justify-content:center;margin-bottom:20px;">
+                <a class="btn btn-lg btn-danger" href="/store">Continue to basket</a>
+                </div>
                 <ul>
                    <% products.forEach((product,index) => { %>
                     <li>Product<%= index+1 %>  <i>-</i> <span>₹<%= product.price %>  </span></li>
