@@ -97,7 +97,7 @@ router.get('/success',(req,res)=>{
 });
 
 router.get('/cancel',(req,res)=>{
-  res.render('cancel');
+  res.redirect('/cart');
 })
 
 router.get('/trainer/:id',async(req,res)=>{
