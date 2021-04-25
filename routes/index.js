@@ -30,7 +30,7 @@ router.get('/addtocart/:id',(req,res)=>{
          res.redirect('/product/'+productId);
      })
 })
-router.get('/cart',(req,res)=>{
+router.get('/cart',isLoggedIn,(req,res)=>{
     if(!req.session.cart){
         return res.render('checkout',{products:null});
     }
