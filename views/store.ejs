@@ -142,22 +142,20 @@
         <div class="row mt-5">
             <div class="col-md-4">
                 <div>
-                    <form action="#" method="post">
+                    <form action="/store" method="get">
                         <div class="input-group mb-3">
-                        <input type="text" class="form-control" placeholder="Search Product" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                        <input type="text" class="form-control" id="productName" name="productName" placeholder="Search Product" aria-label="Recipient's username" aria-describedby="basic-addon2" required>
                         <button class=" btn btn-primary" id="basic-addon2"><i class="fa fa-search"></i></button>
                         </div>
                     </form>
                 </div>
                 <div class="mb-2">
                     <p>Sort By:</p>
-                    <form action="#" method="post">
-                        <select class="form-select form-control"  name="arrival" id="arrival">
-                            <option value="newArrival">New Arrival</option>
-                            <option value="highest">Highest</option>
-                            <option value="lowest">Lowest</option>
-                        </select>
-                    </form>
+                      <select class="form-select form-control" onchange="location=this.value;">
+                          <option disabled selected>Select The option</option>
+                          <option value="/store?sortOrder=highest">Highest</option>
+                          <option value="/store?sortOrder=lowest">Lowest</option>
+                      </select>
                 </div>
                 <div class="mb-3" style="background-color:#f2f2f2;border:1px solid #ccc;padding:30px;" >
                     <h2>Product Category</h2>
@@ -184,166 +182,42 @@
                 </div>
             </div>
             <div class="col-md-8">
-              <div class="row gy-4">
-
-                <% products.forEach(product => { %>
-                  <div class="col-md-4">
-                    <a href="/product/<%= product._id %> " class="custom-card">
-                      <div class="card mx-1 shadow-lg">
-                        <img  src=<%= product.image %>   class="card-img-top" alt="...">
-                        <div class="card-body">
-                          <a href="/product/<%= product._id %> " class="card-title" style="color:black"> <%= product.title %>...</a>
-                          <p class="card-text" style="font-size: 11px;">10% off with AU Bank Debit Cards...</p>
-                          <p class="card-text"><small class="text-muted">
-                            <i class="fas fa-star text-warning"></i>
-                            <i class="fas fa-star text-warning"></i>
-                            <i class="fas fa-star text-warning"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            4.5 (18,560)</small>
-                            <span class="d-block"></span>
-                            <span class="float-right " >
-                              <small style="text-decoration: line-through;" class="text-muted">(₹1,880)</small>₹<%= product.price %>  Save ₹1,050 (56%)</span>
-                          </p> 
+              <% if (products.length>0) { %>
+                <div class="row gy-4">
+                  <% products.forEach(product => { %>
+                    <div class="col-md-4">
+                      <a href="/product/<%= product._id %> " class="custom-card">
+                        <div class="card mx-1 shadow-lg">
+                          <img  src=<%= product.image %>   class="card-img-top" alt="...">
+                          <div class="card-body">
+                            <a href="/product/<%= product._id %> " class="card-title" style="color:black"> <%= product.title %>...</a>
+                            <p class="card-text" style="font-size: 11px;">10% off with AU Bank Debit Cards...</p>
+                            <p class="card-text"><small class="text-muted">
+                              <i class="fas fa-star text-warning"></i>
+                              <i class="fas fa-star text-warning"></i>
+                              <i class="fas fa-star text-warning"></i>
+                              <i class="fas fa-star"></i>
+                              <i class="fas fa-star"></i>
+                              4.5 (18,560)</small>
+                              <span class="d-block"></span>
+                              <span class="float-right " >
+                                <small style="text-decoration: line-through;" class="text-muted">(₹1,880)</small>₹<%= product.price %>  Save ₹1,050 (56%)</span>
+                            </p> 
+                          </div>
                         </div>
-                      </div>
-                    </a>
+                      </a>
+                    </div>
+                  <% }) %>
+                </div>
+              <% }else{ %>
+                <div class="d-flex justify-content-center align-items-center">
+                  <div>
+                    <img src="imgs/NoProductFound.svg" width="300px" alt="No product Found">
+                    <h1>No Product Found </h1>
                   </div>
-                <% }) %>
-
-               <!--  <div class="col-md-4">
-                  <a href="/products" class="custom-card">
-                    <div class="card mx-1 shadow-lg">
-                      <img  src="./imgs/rubber-dumbbell-set.jpg"  class="card-img-top" alt="...">
-                      <div class="card-body">
-                        <a href="/products" class="card-title" style="color:black"> Protoner Pair of 5kg Each PVC Dumbbells Set...</a>
-                        <p class="card-text" style="font-size: 11px;">10% off with AU Bank Debit Cards...</p>
-                        <p class="card-text"><small class="text-muted">
-                          <i class="fas fa-star text-warning"></i>
-                          <i class="fas fa-star text-warning"></i>
-                          <i class="fas fa-star text-warning"></i>
-                          <i class="fas fa-star"></i>
-                          <i class="fas fa-star"></i>
-                          4.5 (18,560)</small>
-                          <span class="d-block"></span>
-                          <span class="float-right " >
-                            <small style="text-decoration: line-through;" class="text-muted">(₹1,880)</small>₹830 Save ₹1,050 (56%)</span>
-                        </p> 
-                      </div>
-                    </div>
-                  </a>
                 </div>
-                <div class="col-md-4">
-                  <a href="/products" class="custom-card">
-                    <div class="card mx-1 shadow-lg">
-                      <img  src="./imgs/rubber-dumbbell-set.jpg"  class="card-img-top" alt="...">
-                      <div class="card-body">
-                        <a href="/products" class="card-title" style="color:black"> Protoner Pair of 5kg Each PVC Dumbbells Set...</a>
-                        <p class="card-text" style="font-size: 11px;">10% off with AU Bank Debit Cards...</p>
-                        <p class="card-text"><small class="text-muted">
-                          <i class="fas fa-star text-warning"></i>
-                          <i class="fas fa-star text-warning"></i>
-                          <i class="fas fa-star text-warning"></i>
-                          <i class="fas fa-star"></i>
-                          <i class="fas fa-star"></i>
-                          4.5 (18,560)</small>
-                          <span class="d-block"></span>
-                          <span class="float-right " >
-                            <small style="text-decoration: line-through;" class="text-muted">(₹1,880)</small>₹830 Save ₹1,050 (56%)</span>
-                        </p> 
-                      </div>
-                    </div>
-                  </a>
-                </div>
-                <div class="col-md-4">
-                  <a href="/products" class="custom-card">
-                    <div class="card mx-1 shadow-lg">
-                      <img  src="./imgs/rubber-dumbbell-set.jpg"  class="card-img-top" alt="...">
-                      <div class="card-body">
-                        <a href="/products" class="card-title" style="color:black"> Protoner Pair of 5kg Each PVC Dumbbells Set...</a>
-                        <p class="card-text" style="font-size: 11px;">10% off with AU Bank Debit Cards...</p>
-                        <p class="card-text"><small class="text-muted">
-                          <i class="fas fa-star text-warning"></i>
-                          <i class="fas fa-star text-warning"></i>
-                          <i class="fas fa-star text-warning"></i>
-                          <i class="fas fa-star"></i>
-                          <i class="fas fa-star"></i>
-                          4.5 (18,560)</small>
-                          <span class="d-block"></span>
-                          <span class="float-right " >
-                            <small style="text-decoration: line-through;" class="text-muted">(₹1,880)</small>₹830 Save ₹1,050 (56%)</span>
-                        </p> 
-                      </div>
-                    </div>
-                  </a>
-                </div>
-                <div class="col-md-4">
-                  <a href="/products" class="custom-card">
-                    <div class="card mx-1 shadow-lg">
-                      <img  src="./imgs/rubber-dumbbell-set.jpg"  class="card-img-top" alt="...">
-                      <div class="card-body">
-                        <a href="/products" class="card-title" style="color:black"> Protoner Pair of 5kg Each PVC Dumbbells Set...</a>
-                        <p class="card-text" style="font-size: 11px;">10% off with AU Bank Debit Cards...</p>
-                        <p class="card-text"><small class="text-muted">
-                          <i class="fas fa-star text-warning"></i>
-                          <i class="fas fa-star text-warning"></i>
-                          <i class="fas fa-star text-warning"></i>
-                          <i class="fas fa-star"></i>
-                          <i class="fas fa-star"></i>
-                          4.5 (18,560)</small>
-                          <span class="d-block"></span>
-                          <span class="float-right " >
-                            <small style="text-decoration: line-through;" class="text-muted">(₹1,880)</small>₹830 Save ₹1,050 (56%)</span>
-                        </p> 
-                      </div>
-                    </div>
-                  </a>
-                </div>
-                <div class="col-md-4">
-                  <a href="/products" class="custom-card">
-                    <div class="card mx-1 shadow-lg">
-                      <img  src="./imgs/rubber-dumbbell-set.jpg"  class="card-img-top" alt="...">
-                      <div class="card-body">
-                        <a href="/products" class="card-title" style="color:black"> Protoner Pair of 5kg Each PVC Dumbbells Set...</a>
-                        <p class="card-text" style="font-size: 11px;">10% off with AU Bank Debit Cards...</p>
-                        <p class="card-text"><small class="text-muted">
-                          <i class="fas fa-star text-warning"></i>
-                          <i class="fas fa-star text-warning"></i>
-                          <i class="fas fa-star text-warning"></i>
-                          <i class="fas fa-star"></i>
-                          <i class="fas fa-star"></i>
-                          4.5 (18,560)</small>
-                          <span class="d-block"></span>
-                          <span class="float-right " >
-                            <small style="text-decoration: line-through;" class="text-muted">(₹1,880)</small>₹830 Save ₹1,050 (56%)</span>
-                        </p> 
-                      </div>
-                    </div>
-                  </a>
-                </div>
-                <div class="col-md-4">
-                  <a href="/products" class="custom-card">
-                    <div class="card mx-1 shadow-lg">
-                      <img  src="./imgs/rubber-dumbbell-set.jpg"  class="card-img-top" alt="...">
-                      <div class="card-body">
-                        <a href="/products" class="card-title" style="color:black"> Protoner Pair of 5kg Each PVC Dumbbells Set...</a>
-                        <p class="card-text" style="font-size: 11px;">10% off with AU Bank Debit Cards...</p>
-                        <p class="card-text"><small class="text-muted">
-                          <i class="fas fa-star text-warning"></i>
-                          <i class="fas fa-star text-warning"></i>
-                          <i class="fas fa-star text-warning"></i>
-                          <i class="fas fa-star"></i>
-                          <i class="fas fa-star"></i>
-                          4.5 (18,560)</small>
-                          <span class="d-block"></span>
-                          <span class="float-right " >
-                            <small style="text-decoration: line-through;" class="text-muted">(₹1,880)</small>₹830 Save ₹1,050 (56%)</span>
-                        </p> 
-                      </div>
-                    </div>
-                  </a>
-                </div> -->
-              </div>
+              <% } %> 
+              
             </div>
         </div>
     </div>

@@ -106,4 +106,7 @@ router.get('/trainer/:id',async(req,res)=>{
 })
 
 
+
+
+
 module.exports=router;
