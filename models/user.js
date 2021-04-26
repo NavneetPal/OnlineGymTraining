@@ -1,6 +1,6 @@
 const mongoose=require('mongoose');
 const passportLocalMongoose=require('passport-local-mongoose')
-
+const Schema=mongoose.Schema;
 
 const UserSchema=new mongoose.Schema({
     email:{
@@ -25,7 +25,12 @@ const UserSchema=new mongoose.Schema({
     },
     facebookId:{
         type:String
-    }
+    },
+    purchases:[{
+        type:Schema.Types.ObjectId,
+        ref:'Order',
+        required:false
+    }]
 })
 
 UserSchema.statics.checkExistingField = function(field, value){

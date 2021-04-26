@@ -15,7 +15,6 @@ router.post('/',isLoggedIn,async(req,res)=>{
         const newComment= await comment.save();
         product.comments.push(newComment);
         const newProduct=await product.save();
-        console.log(newProduct);
         res.redirect(`/product/${newProduct._id}`);
     }
 })

@@ -5,6 +5,7 @@ const User=require('../models/user');
 const Product=require('../models/product');
 const Trainer=require('../models/trainer');
 const Cart=require('../models/cart');
+const Order=require('../models/order');
 const {isLoggedIn}=require('../middleware/middleware');
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 const {showHomePage,showHome,subscribeNewsletter,showAboutPage}=require('../controller/index');
@@ -91,10 +92,32 @@ router.post('/create-checkout-session',async (req, res) => {
 });
 
 
-router.get('/success',(req,res)=>{
+router.get('/success',async(req,res)=>{
+  let cart=new Cart(req.session.cart);
+  let products=cart.generateArray();
+
+  for(let product of products){
+    let newQty=product.item.quantity-product.qty;
+    await Product.findByIdAndUpdate(product.item._id,{quantity:newQty});
+  }
+
+  const order=new Order({
+    user:req.user,
+    cart:products
+  })
+  const newOrder=await order.save();
+  if(order){
+    const user=await User.findById(req.user._id);
+    user['purchases'].push(order);
+    const newUser=await user.save();
+  }
   req.session.cart=null;
   res.render('success');
 });
+
+
+
+
 
 router.get('/cancel',(req,res)=>{
   res.redirect('/cart');
@@ -103,6 +126,13 @@ router.get('/cancel',(req,res)=>{
 router.get('/trainer/:id',async(req,res)=>{
   const trainer=await Trainer.findById(req.params.id);
   res.render('trainer',{trainer});
+})
+
+
+router.get('/user',async(req,res)=>{
+  const user=await User.findById(req.user.id).populate('purchases');
+  console.log(user);
+  res.render('user',{user});
 })
 
 
