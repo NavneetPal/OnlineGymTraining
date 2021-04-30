@@ -137,6 +137,10 @@ app.use('/',authRoutes)
 app.use('/',adminRoutes)
 app.use('/auth',googleRoutes)
 
+app.use('/class',(req,res)=>{
+    res.render('class');
+})
+
 app.get('*',(req,res)=>{
     res.render('notFound');
 })
