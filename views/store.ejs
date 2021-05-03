@@ -74,6 +74,9 @@
           background-color: #2b3636;
           transition:background-color 500ms;
       }
+      #rating a{
+        text-decoration: none;
+      }
     </style>
     <title>STORE</title>
   </head>
@@ -172,7 +175,7 @@
                         <span class="badge bg-success">Success</span>
                     </div>
                 </div>
-                <div style="background-color:#f2f2f2;border:1px solid #ccc;padding:30px;" >
+                <div class="mb-3" style="background-color:#f2f2f2;border:1px solid #ccc;padding:30px;" >
                     <h2>Filter By Price</h2>
                     <div >
                         <form action="/store" id="pricerange"  method="get">
@@ -185,6 +188,57 @@
                                 <button class="btn btn-primary btn-sm" type="submit">Search</button>
                             </div>
                         </form>
+                    </div>
+                </div>
+                <div id="rating" style="background-color:#f2f2f2;border:1px solid #ccc;padding:30px;" >
+                    <h2>Filter By Rating</h2>
+                    <div>
+                      <a href="/store?rating=4">
+                        <span>
+                          <i class="fas fa-star text-warning"></i>
+                          <i class="fas fa-star text-warning"></i>
+                          <i class="fas fa-star text-warning"></i>
+                          <i class="fas fa-star text-warning"></i>
+                          <i class="fas fa-star"></i>
+                        </span>
+                        & Up
+                      </a>
+                    </div>
+                    <div>
+                      <a href="/store?rating=3">
+                        <span>
+                          <i class="fas fa-star text-warning"></i>
+                          <i class="fas fa-star text-warning"></i>
+                          <i class="fas fa-star text-warning"></i>
+                          <i class="fas fa-star "></i>
+                          <i class="fas fa-star "></i>
+                        </span>
+                        & Up
+                      </a>
+                    </div>
+                    <div>
+                      <a href="/store?rating=2">
+                        <span>
+                          <i class="fas fa-star text-warning"></i>
+                          <i class="fas fa-star text-warning"></i>
+                          <i class="fas fa-star "></i>
+                          <i class="fas fa-star "></i>
+                          <i class="fas fa-star "></i>
+                        </span>
+                        & Up
+                      </a>
+                    </div>
+                    <div >
+                      <a href="/store?rating=1">
+                        <span>
+                          <i class="fas fa-star text-warning"></i>
+                          <i class="fas fa-star"></i>
+                          <i class="fas fa-star "></i>
+                          <i class="fas fa-star "></i>
+                          <i class="fas fa-star "></i>
+                        </span>
+                        & Up
+                      </a>
                     </div>
                 </div>
             </div>
@@ -200,12 +254,13 @@
                             <a href="/product/<%= product._id %> " class="card-title" style="color:black"> <%= product.title %>...</a>
                             <p class="card-text" style="font-size: 11px;">10% off with AU Bank Debit Cards...</p>
                             <p class="card-text"><small class="text-muted">
-                              <i class="fas fa-star text-warning"></i>
-                              <i class="fas fa-star text-warning"></i>
-                              <i class="fas fa-star text-warning"></i>
-                              <i class="fas fa-star"></i>
-                              <i class="fas fa-star"></i>
-                              4.5 (18,560)</small>
+                              <% for( let index = 1; index <= product.rating; index++ ) { %>
+                                <i class="fas fa-star text-warning"></i>
+                              <% } %>
+                              <% for( let index = 0; index < (5-product.rating); index++ ) { %>
+                                <i class="fas fa-star"></i>
+                              <% } %>
+                              <%= product.rating %>  (18,560)</small>
                               <span class="d-block"></span>
                               <span class="float-right " >
                                 <small style="text-decoration: line-through;" class="text-muted">(₹1,880)</small>₹<%= product.price %>  Save ₹1,050 (56%)</span>

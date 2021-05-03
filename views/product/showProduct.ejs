@@ -336,11 +336,12 @@
                     <h3 style="color: #fb383b;font-size:38px;"><%= product.title %> </h3>
                     <p><span class="item_price">₹<%= product.price %> </span> <del>1,880.00</del> </p>
                     <p>
+                      <% for( let index = 1; index <= product.rating; index++ ) { %>
                         <i class="fas fa-star text-warning"></i>
-                        <i class="fas fa-star text-warning"></i>
-                        <i class="fas fa-star text-warning"></i>
+                      <% } %>
+                      <% for( let index = 0; index < (5-product.rating); index++ ) { %>
                         <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
+                      <% } %>
                     </p>
                     <!-- <p class="starability-result" data-rating="3">
                       Rated: 3 stars

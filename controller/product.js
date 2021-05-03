@@ -8,13 +8,17 @@ module.exports={
             const products=await Product.find({});
             res.render('store',{products})
         }else{
-            const {minprice,maxprice,productName,sortOrder}=req.query;
+            const {minprice,maxprice,productName,sortOrder,rating}=req.query;
             if(minprice && maxprice){
                 const products=await Product.find({price:{$gte:minprice,$lte:maxprice}});
                 res.render('store',{products})
             }
             if(productName){
                 const products=await Product.find({title:new RegExp('.*'+productName+'.*','i')});
+                res.render('store',{products});
+            }
+            if(rating){
+                const products=await Product.find({rating:{$gte:rating}});
                 res.render('store',{products});
             }
             if(sortOrder){
