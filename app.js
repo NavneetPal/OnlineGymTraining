@@ -68,6 +68,7 @@ app.use(express.static(path.join(__dirname,'public')));
 app.use('/notifications',express.static(path.join(__dirname,'public')))
 app.use('/product',express.static(path.join(__dirname,'public')))
 app.use('/trainer',express.static(path.join(__dirname,'public')))
+app.use('/class',express.static(path.join(__dirname,'public')))
 app.use(methodOverride('_method'))
 app.use(mongoSanitize());
 
@@ -138,9 +139,7 @@ app.use('/',authRoutes)
 app.use('/',adminRoutes)
 app.use('/auth',googleRoutes)
 
-app.use('/class',(req,res)=>{
-    res.render('class');
-})
+
 
 app.get('*',(req,res)=>{
     res.render('notFound');

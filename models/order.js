@@ -10,6 +10,8 @@ const orderSchema=new mongoose.Schema({
         type:Object,
         required:true
     }
+},{
+    timestamps:true
 });
 
 module.exports=mongoose.model('Order',orderSchema);

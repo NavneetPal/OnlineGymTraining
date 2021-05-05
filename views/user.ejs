@@ -68,48 +68,121 @@
 
     <%- include('partials/navbar') %> 
 
+    
+
     <!--User Profile data address  mobile-->
     <div class="container" style="margin-top:200px">
+      <div class="row h-100 align-items-center">
+          <div class="col-md-6 ml-3">
+             <h3>Profile settings</h3>
+             <p>
+               Change your profile settings here
+             </p>
+          </div>
+          <div class="col-md-5">
+              <img src="imgs/profile.svg" width="300" alt="" class="img-fluid">
+          </div>
+        </div>
+    </div>
+
+    <div class="container">
+      <% if(error && error.length > 0){ %>
+          <div class="alert alert-danger alert-dismissible fade show" role="alert">
+              <%= error %>
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+          </div>
+      <% } %>
+      <% if(success && success.length > 0){ %>
+          <div class="alert alert-success alert-dismissible fade show" role="alert">
+              <%= success %>
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+          </div>
+      <% } %>
+   </div>
+
+ 
+    <div class="container mt-5">
         <div class="row">
             <div class="col-12">
-                <form>
+                <form action="/updateUser/<%= user._id %> " method="POST">
                     <div class="form-row">
                       <div class="form-group col-md-4">
                         <label for="email">Email</label>
-                        <input type="email" value=<%= user.email %> name="email" class="form-control" id="email">
+                        <input type="email" value="<%= user.email %>" name="email" class="form-control" id="email">
                       </div>
                       <div class="form-group col-md-4">
                         <label for="username">UserName</label>
-                        <input type="text" value=<%= user.username %>  name="username" class="form-control" id="username">
+                        <input type="text" value="<%= user['username'] %>"  name="username" class="form-control" id="username">
                       </div>
                       <div class="form-group col-md-4">
                         <label for="mobileno">Mobile Number</label>
-                        <input type="tel" plcaeholder="Enter Mobile Number"  name="mobileno" class="form-control" id="mobileno">
+                        <input type="tel" value="<%= user['mobile'] %>"  plcaeholder="Enter Mobile Number"  name="mobile" class="form-control" id="mobileno">
                       </div>
                     </div>
                     <div class="form-group">
                       <label for="inputAddress">Address</label>
-                      <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
+                      <input type="text" class="form-control" value="<%= user['address1'] %>"  name="address1" id="inputAddress" placeholder="1234 Main St">
                     </div>
                     <div class="form-group">
                       <label for="inputAddress2">Address 2</label>
-                      <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
+                      <input type="text" class="form-control" value="<%= user['address2'] %>"  name="address2" id="inputAddress2" placeholder="Apartment, studio, or floor">
                     </div>
                     <div class="form-row">
                       <div class="form-group col-md-6">
                         <label for="inputCity">City</label>
-                        <input type="text" class="form-control" id="inputCity">
+                        <input type="text" class="form-control" value="<%= user['city'] %>"  name="city" id="inputCity">
                       </div>
                       <div class="form-group col-md-4">
                         <label for="inputState">State</label>
-                        <select id="inputState" class="form-control">
-                          <option selected>Choose...</option>
-                          <option>...</option>
-                        </select>
+                        <select name="state" id="state"  class="form-control">
+                          <% if (user['state']) { %>
+                          <option value="<%= user['state'] %>" selected><%= user['state'] %> </option>
+                          <% } %>
+                          <option value="Andhra Pradesh">Andhra Pradesh</option>
+                          <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
+                          <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+                          <option value="Assam">Assam</option>
+                          <option value="Bihar">Bihar</option>
+                          <option value="Chandigarh">Chandigarh</option>
+                          <option value="Chhattisgarh">Chhattisgarh</option>
+                          <option value="Dadar and Nagar Haveli">Dadar and Nagar Haveli</option>
+                          <option value="Daman and Diu">Daman and Diu</option>
+                          <option value="Delhi">Delhi</option>
+                          <option value="Lakshadweep">Lakshadweep</option>
+                          <option value="Puducherry">Puducherry</option>
+                          <option value="Goa">Goa</option>
+                          <option value="Gujarat">Gujarat</option>
+                          <option value="Haryana">Haryana</option>
+                          <option value="Himachal Pradesh">Himachal Pradesh</option>
+                          <option value="Jammu and Kashmir">Jammu and Kashmir</option>
+                          <option value="Jharkhand">Jharkhand</option>
+                          <option value="Karnataka">Karnataka</option>
+                          <option value="Kerala">Kerala</option>
+                          <option value="Madhya Pradesh">Madhya Pradesh</option>
+                          <option value="Maharashtra">Maharashtra</option>
+                          <option value="Manipur">Manipur</option>
+                          <option value="Meghalaya">Meghalaya</option>
+                          <option value="Mizoram">Mizoram</option>
+                          <option value="Nagaland">Nagaland</option>
+                          <option value="Odisha">Odisha</option>
+                          <option value="Punjab">Punjab</option>
+                          <option value="Rajasthan">Rajasthan</option>
+                          <option value="Sikkim">Sikkim</option>
+                          <option value="Tamil Nadu">Tamil Nadu</option>
+                          <option value="Telangana">Telangana</option>
+                          <option value="Tripura">Tripura</option>
+                          <option value="Uttar Pradesh">Uttar Pradesh</option>
+                          <option value="Uttarakhand">Uttarakhand</option>
+                          <option value="West Bengal">West Bengal</option>
+                          </select>
                       </div>
                       <div class="form-group col-md-2">
                         <label for="inputZip">Zip</label>
-                        <input type="text" class="form-control" id="inputZip">
+                        <input type="text" value=<%= user['zip'] %>  name="zip" class="form-control" id="inputZip">
                       </div>
                     </div>
                     <button type="submit" class="btn btn-primary">Update User Profile</button>
@@ -119,31 +192,61 @@
     </div>
     <!--User profile ends here-->
 
-    <div class="container">
-        <div class="row">
-            <div class="col-12">
-                <h1>Your Purchases</h1>
-            </div>
+    <div class="container mt-5">
+      <div class="row h-100 align-items-center">
+          <div class="col-md-6 ml-3">
+            <img src="imgs/products.svg" width="300" alt="" class="img-fluid">
+          </div>
+          <div class="col-md-5 ">
+             <h3>Your Purchases</h3>
+             <p>
+               All the purchases that you have done till now.
+             </p>
+          </div>
+          
         </div>
+    </div>
+
+    <!--Purchases Table-->
+    <div class="container mt-5">
         <div class="row">
           <% if (user['purchases'].length>0) { %>
             <div class="col-12">
-              <ul>
-                <% user['purchases'].forEach(purchase => { %>
-                  <% purchase['cart'].forEach(product => { %>
-                      <li><%= product.item.title %>  </li>
+              <table class="table">
+                <thead class="thead-light">
+                  <tr>
+                    <th>SR.No</th>
+                    <th>Product Name</th>
+                    <th>Quantity</th>
+                    <th>Price</th>
+                    <th>Buy Date</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <% user['purchases'].forEach(purchase => { %>
+                    <% purchase['cart'].forEach((product,index) => { %>
+                      <tr>
+                        <td><%= index+1 %> </td>
+                        <td><%= product.item.title %>  </td>
+                        <td><%= product.qty %>  </td>
+                        <td><%= product.price %>  </td>
+                        <td><%= purchase.createdAt.toDateString() %>  </td>
+                      </tr>
+                    <% }) %>
                   <% }) %>
-                <% }) %>
-              </ul>
+                </tbody>
+              </table>
           </div>
           <% }else{ %>
             <div class="col-12">
               <h3>You haven't buyed anything yet</h3>
             </div>
           <% } %> 
+
             
         </div>
     </div>
+    <!--Purchase Table-->
 
 
     <%- include('partials/footer') %> 

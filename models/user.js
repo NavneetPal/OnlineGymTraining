@@ -30,7 +30,27 @@ const UserSchema=new mongoose.Schema({
         type:Schema.Types.ObjectId,
         ref:'Order',
         required:false
-    }]
+    }],
+    address1:{
+        type:String
+    },
+    address2:{
+        type:String
+    },
+    city:{
+        type:String
+    },
+    state:{
+        type:String
+    },
+    zip:{
+        type: Number
+    },
+    mobile:{
+        type:String
+    }
+},{
+    timestamps:true
 })
 
 UserSchema.statics.checkExistingField = function(field, value){

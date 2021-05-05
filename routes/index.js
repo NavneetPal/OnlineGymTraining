@@ -10,7 +10,7 @@ const {isLoggedIn}=require('../middleware/middleware');
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 const {showHomePage,showHome,subscribeNewsletter,showAboutPage}=require('../controller/index');
 const {showProducts}=require('../controller/product');
-const { reset } = require('chalk');
+const chalk = require('chalk');
 
 router.get(("/"),showHomePage);
 router.get(("/ogt"),showHome);
@@ -31,12 +31,13 @@ router.get('/addtocart/:id',(req,res)=>{
          res.redirect('/product/'+productId);
      })
 })
-router.get('/cart',isLoggedIn,(req,res)=>{
+router.get('/cart',isLoggedIn,async(req,res)=>{
     if(!req.session.cart){
         return res.render('checkout',{products:null});
     }
     let cart=new Cart(req.session.cart);
-    res.render('checkout',{products:cart.generateArray(),totalPrice:cart.totalPrice});
+    const user=await User.findById(req.user.id);
+    res.render('checkout',{products:cart.generateArray(),totalPrice:cart.totalPrice,user:user});
 })
 
 router.get('/reduce/:id',(req,res)=>{
@@ -130,11 +131,35 @@ router.get('/trainer/:id',async(req,res)=>{
 
 
 router.get('/user',async(req,res)=>{
+  
   const user=await User.findById(req.user.id).populate('purchases');
   console.log(user);
+  const purchases=user['purchases'];
   res.render('user',{user});
 })
 
+
+router.post('/updateUser/:id',async(req,res)=>{
+  console.log(req.body);
+  const updatedUser=await User.findByIdAndUpdate({_id:req.params.id},req.body);
+  if(updatedUser){
+    req.flash('success','Your Profile updated Successfully');
+    res.redirect('/user');
+  }else{
+    req.flash('error','Not able to Update.');
+    res.redirect('/user');
+  }
+})
+
+
+
+router.get('/class/:id',(req,res)=>{
+  const id=req.params.id;
+  if(id==='1'){
+    res.render('class1');
+  }
+  res.render('class');
+})
 
 
 

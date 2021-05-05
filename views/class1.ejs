@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Class page</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
+    <style>
+        *{
+          box-sizing: border-box;
+        }
+        body{
+            background-color:darkgrey;
+            
+        }
+        h3{
+            text-decoration: underline;
+        }
+        .btn{
+           border-radius: 10px; 
+           width: 25%;
+        }
+        
+        
+        .navbar{
+            padding: 0;
+            background-color: #262626;
+        }
+        .navbar-nav a{
+            font-size:17px;
+            font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+        }
+        .navbar-brand{
+            font-size: 45px;
+        }
+      
+        .nav li a {
+          color: #8a8a8a;
+          width: auto;
+          display: block;
+          text-decoration: none;
+          background-color: transparent;
+          font-size: 12px;
+          font-weight: 700;
+      }
+    </style>
+
+</head>
+<body>
+
+
+      <!--navbar-->
+      <nav class="navbar navbar-expand-lg  navbar-dark" id="navbarogt">
+        <div class="container" style="margin-top:0px">
+          <a class="navbar-brand" href="/"><img src="imgs/OGTLOGO.png" width="75px" alt=""></a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto" style="margin-right:150px">
+              <li class="nav-item">
+                <a class="nav-link active" href="/">HOME <span class="sr-only">(current)</span></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/about">ABOUT</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/store">STORE</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/notifications">NOTIFICATION</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/cart">
+                  <i class="fas fa-2x fa-shopping-cart">
+                    <span class="badge bg-primary" style="font-size:10px">
+                      <% if (session.cart) { %>
+                        <%= session.cart.totalQty %> 
+                      <% }else{ %>
+                      0
+                      <% } %> 
+                    </span>
+                  </i>
+                </a>
+              </li>
+              <% if (currentUser && currentUser.role===1) { %>
+                <li class="nav-item">
+                  <a class="nav-link" href="/admin">ADMIN DASHBOARD</a>
+                </li>
+              <% } %>
+              <% if (currentUser) { %>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        WELCOME <%= (currentUser.username).toUpperCase() %>
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                      <a class="dropdown-item" href="/user">User Profile</a>
+                      <div class="dropdown-divider"></div>
+                      <a class="dropdown-item" href="/signout">SignOut</a>
+                    </div>
+                </li>
+            <% } %>
+              
+            </ul>
+          </div>
+        </div>
+      </nav>
+     <!--Navbar Over-->
+
+    <div class="container" style="margin-top:100px">
+      <div class="row">
+        <div class="col-md-6">
+          <h1>BODY BUILDING</h1>
+          <h5>TIMR - 8:00 AM</h5>
+          <h5>DURATION - 30 MIN</h5>
+          <br><br>
+          <h2>COMPONENTS:</h2>
+          <h5>YOGA MATT</h5>
+          <br><br>
+          <button type="button" class="btn btn-warning">JOIN</button>
+        </div>
+        <div class="col-md-6">
+          <img src="imgs/workout.svg" class="img-fluid" width="100%" alt="">
+        </div>
+      </div>
+      
+    </div>
+
+
+     <div class="container mb-5" style="margin-top:75px">
+       <div class="row mb-3">
+         <div class="col-md-12 text-center">
+           <h1>BENEFITS OF BODY BUILDING</h1> 
+        </div>
+       </div>
+       <div class="row">
+         <div class="col-md-6">
+           <img src="imgs/workout1.jpg" class="img-fluid" alt="">
+         </div>
+         <div class="col-md-6">
+          <p>-"Powerhouse Gym is the fastest growing gym licensing organization in the world..”</p>
+          <p>-We are distinguished by our unsurpassed motivating atmosphere, knowledgable staff and premier exercise equipment.
+          </p>
+          <p>- it develops motor control (the regulation of movement by the central nervous system). This is critical because motor control is the base of support for all types of exercise.
+          </p>
+          <p>-bodybuilding is a great tool to use when trying to change body composition.</p>
+         </div>
+       </div>
+     </div>
+    
+     <!--footer-->
+     <footer style="background-color:#fff">
+        <div class="container">
+          <div class="row pb-2">
+              <div class="col-md-12">
+                <div class="d-flex " style="justify-content:space-around">
+                  <ul class="nav">
+                    <li class="nav-item">
+                      <a class="nav-link active" href="#">Terms & Conditions</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="#">Privacy</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="#">Refund Policy</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="#">COPYRIGHT <span>&#169;</span> 2020 OGT
+                      </a>
+                    </li>
+                  </ul>
+                  <ul class="nav">
+                    <li class="nav-item">
+                      <a class="nav-link" href="#"><i class="fab fa-facebook fa-2x"></i></a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="#"><i class="fab fa-instagram fa-2x"></i></a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="#"><i class="fab fa-telegram-plane fa-2x"></i></a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="#"><i class="fab fa-youtube fa-2x"></i></a>
+                    </li>
+                    <span class="border-right" style="border-width: thick;"></span>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            
+          </div>
+        </div>
+      </footer>
+     <!--Footer-->
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s" crossorigin="anonymous"></script>
+    
+</body>
+</html>
