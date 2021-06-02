@@ -1,13 +1,13 @@
 const GoogleSrategy=require('passport-google-oauth20').Strategy;
 const User=require('../models/user');
-
+let a='https://pacific-fjord-36977.herokuapp.com/auth/google/callback'
 
 module.exports=function(passport){
     passport.use(
         new GoogleSrategy({
             clientID:process.env.GOOGLE_CLIENT_ID,
             clientSecret:process.env.GOOGLE_CLIENT_SECRET,
-            callbackURL:'https://pacific-fjord-36977.herokuapp.com/auth/google/callback',
+            callbackURL:'http://localhost:5000/auth/google/callback',
         },
         async(accessToken,refreshToken,profile,done)=>{
             try {

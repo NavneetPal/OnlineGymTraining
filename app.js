@@ -18,7 +18,7 @@ const chalk=require('chalk');
 const flash=require('connect-flash');
 const mongoSanitize=require('express-mongo-sanitize')
 const fetch=require('node-fetch');
-
+const helmet=require('helmet');
 
  
 //requiring routes
@@ -57,6 +57,7 @@ mongoose.connect(dbUrl,
 })
 
 //Middleware
+app.use(helmet());
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(bodyParser.json());
 app.use('/uploads',express.static('uploads'));

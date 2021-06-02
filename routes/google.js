@@ -1,7 +1,7 @@
 const express=require('express');
 const router=express.Router();
 const passport=require('passport')
-
+let data;
 //auth with google
 router.get('/google',passport.authenticate('google',{scope:['email']}))
 
@@ -13,6 +13,7 @@ router.get(
       res.redirect('/ogt')
     }
 )
+
 
 router.get('/facebook',passport.authenticate('facebook',{scope:['profile','email']}))
 

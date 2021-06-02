@@ -78,6 +78,7 @@
         text-decoration: none;
         color: inherit;
       }
+     
     </style>
     <title>STORE</title>
   </head>
@@ -250,7 +251,7 @@
                     <div class="col-md-4">
                       <a href="/product/<%= product._id %> " class="custom-card">
                         <div class="card mx-1 shadow-lg">
-                          <img  src=<%= product.image %>   class="card-img-top" alt="...">
+                          <img  src=<%= product.image %> id="product-img"  class="card-img-top" alt="...">
                           <div class="card-body">
                             <a href="/product/<%= product._id %> " class="card-title" style="color:black"> <%= product.title %>...</a>
                             <p class="card-text" style="font-size: 11px;">10% off with AU Bank Debit Cards...</p>

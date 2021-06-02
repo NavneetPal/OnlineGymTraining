@@ -23,6 +23,7 @@
     "express-validator": "^6.10.0",
     "find-free-port": "^2.0.0",
     "find-process": "^1.4.4",
+    "helmet": "^4.6.0",
     "method-override": "^3.0.0",
     "mongoose": "^5.11.8",
     "multer": "^1.4.2",

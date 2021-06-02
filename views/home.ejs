@@ -18,6 +18,14 @@
     #traineranchor{
       text-decoration: none;
     }
+
+    #product-card{
+      transition: all 200ms ease-in-out;
+    }
+    #product-card:hover{
+      transform: translateY(-20px);
+      z-index: 50;
+    }
     </style>
     
   </head>
@@ -263,8 +271,8 @@
         <div class="card-deck">
 
           <% products.forEach(product => { %>
-            <a href="/product/<%= product._id %> " class="custom-card">
-              <div class="card mx-1 shadow-lg">
+            <a href="/product/<%= product._id %> "  class="custom-card">
+              <div class="card mx-1 shadow-lg" id="product-card">
                 <img  src=<%= product.image %>   class="card-img-top" alt="...">
                 <div class="card-body">
                   <a href="/product/<%= product._id %>" class="card-title" style="color:black"> <%= product.title %> </a>
