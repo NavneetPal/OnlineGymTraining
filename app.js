@@ -19,7 +19,7 @@ const flash=require('connect-flash');
 const mongoSanitize=require('express-mongo-sanitize')
 const fetch=require('node-fetch');
 const helmet=require('helmet');
-
+const compression=require('compression');
  
 //requiring routes
 const indexRoutes=require('./routes/index');
@@ -58,6 +58,7 @@ mongoose.connect(dbUrl,
 
 //Middleware
 app.use(helmet());
+app.use(compression());
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(bodyParser.json());
 app.use('/uploads',express.static('uploads'));
