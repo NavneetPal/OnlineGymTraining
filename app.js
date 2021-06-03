@@ -57,7 +57,9 @@ mongoose.connect(dbUrl,
 })
 
 //Middleware
-app.use(helmet());
+app.use(helmet({
+    contentSecurityPolicy: false,
+}));
 app.use(compression());
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(bodyParser.json());
@@ -115,9 +117,6 @@ passport.serializeUser(User.serializeUser()); //Genearates a function that is us
 passport.deserializeUser(User.deserializeUser()); //Generates a function that is used by passport to deserialize user into session
 
 
-
-
-
 app.use((req,res,next)=>{
     console.log(req.session);
     res.locals.session=req.session;
@@ -128,10 +127,6 @@ app.use((req,res,next)=>{
     next();
 })
 
-
-
-
-
 //Main routes Handling
 app.use('/notifications',blogRoutes);
 app.use('/product',productRoutes);
@@ -140,22 +135,15 @@ app.use('/',indexRoutes)
 app.use('/',authRoutes)
 app.use('/',adminRoutes)
 app.use('/auth',googleRoutes)
-
-
-
+//404 Not found
 app.get('*',(req,res)=>{
     res.render('notFound');
 })
-
-
-
 
 //Error Handling
 app.use((err,req,res,next)=>{
       console.log(err);
 })
-
-
 
 //server setup
 let PORT=parseInt(process.env.PORT) || 8080;
